@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions } from 
 const Calculator = () => {
   const [input, setInput] = useState('');
   const screenWidth = Dimensions.get('window').width;
-  let buttonSize = (screenWidth <= 375) ? (screenWidth - 110) / 4 : (screenWidth - 100) / 4;
+  let buttonSize = (screenWidth <= 375) ? (screenWidth - 140) / 4 : (screenWidth - 100) / 4;
 
   const handleButtonPress = (value) => {
     if (typeof value === 'number' || value === '.' || ['+', '-', 'x', '÷'].includes(value)) {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: '#1E1E1E',
     textAlign: 'right',
-    fontSize: 30,
+    fontSize: 50,
     color: '#747474',
     elevation: 4,
     paddingHorizontal: 10,
