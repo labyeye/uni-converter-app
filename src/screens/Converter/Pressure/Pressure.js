@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions, StatusBar } from 'react-native';
 import { ArrowPathIcon } from "react-native-heroicons/outline";
 
-const Weight = () => {
+const Pressure = () => {
   const [input, setInput] = useState('');
   const [convertedValue, setConvertedValue] = useState('');
   const [isMeterToFoot, setIsMeterToFoot] = useState(true);
@@ -27,12 +27,12 @@ const Weight = () => {
   };
 
   const convertMetersToFeet = (meters) => {
-    const feet = (parseFloat(meters) * 1000).toFixed(4);
+    const feet = (parseFloat(meters) *1000).toFixed(4);
     return isNaN(feet) ? '' : feet;
   };
 
   const convertFeetToMeters = (feet) => {
-    const meters = (parseFloat(feet) / 1000).toFixed(4);
+    const meters = (parseFloat(feet)/1000).toFixed(4);
     return isNaN(meters) ? '' : meters;
   };
 
@@ -51,10 +51,11 @@ const Weight = () => {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" />
       <View style={styles.inputContainer}>
         <View style={styles.inputRow}>
-          <View style={styles.circle}><Text style={styles.unitText}>{isMeterToFoot ? 'kg' : 'g'}</Text></View>
-          <Text style={styles.unitName}>{isMeterToFoot ? 'Kilogram' : 'Gram'}</Text>
+          <View style={styles.circle}><Text style={styles.unitText}>{isMeterToFoot ? 'B' : 'Pas'}</Text></View>
+          <Text style={styles.unitName}>{isMeterToFoot ? 'Bar' : 'Pascals'}</Text>
           <TextInput
             style={styles.inputField}
             value={input}
@@ -75,8 +76,8 @@ const Weight = () => {
           </View>
         </TouchableOpacity>
         <View style={styles.inputRow}>
-          <View style={styles.circle}><Text style={styles.unitText}>{isMeterToFoot ? 'g' : 'kg'}</Text></View>
-          <Text style={styles.unitName}>{isMeterToFoot ? 'Gram' : 'Kilogram'}</Text>
+          <View style={styles.circle}><Text style={styles.unitText}>{isMeterToFoot ? 'Pas' : 'B'}</Text></View>
+          <Text style={styles.unitName}>{isMeterToFoot ? 'Pascals' : 'Bar'}</Text>
           <TextInput
             style={styles.inputField}
             value={convertedValue}
@@ -106,119 +107,119 @@ const Weight = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-      backgroundColor: '#1A1A1A',
-      flex: 1,
-      alignItems: 'center',
-      paddingVertical: 20,
-      paddingTop: 70, // Adding top padding to account for the notch
-    },
-    inputContainer: {
-      width: '90%',
-      marginBottom: 10,
-    },
-    inputRow: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      marginVertical: 10,
-      backgroundColor: '#1E1E1E',
-      borderRadius: 25,
-      padding: 10,
-      shadowColor: '#000',
-      shadowOffset: { width: 6, height: 6 },
-      shadowOpacity: 1,
-      shadowRadius: 6,
-    },
-    circle: {
-      width: 40,
-      height: 40,
-      borderRadius: 20,
-      backgroundColor: '#1E1E1E',
-      alignItems: 'center',
-      justifyContent: 'center',
-      shadowColor: '#333',
-      shadowOffset: { width: -6, height: -6 },
-      shadowOpacity: 0.7,
-      shadowRadius: 6,
-    },
-    unitText: {
-      color: '#F63356',
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
-    unitName: {
-      color: '#747474',
-      fontSize: 18,
-      marginHorizontal: 10,
-      flex: 1,
-    },
-    inputField: {
-      color: '#747474',
-      fontSize: 18,
-      flex: 1,
-      textAlign: 'right',
-    },
-    buttonsContainer: {
-      width: '100%',
-      flex: 1,
-      justifyContent: 'center',
-      paddingHorizontal: 10,
-      marginTop: 20,
-    },
-    buttonsRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      marginBottom: 10,
-    },
-    buttonOuterShadow: {
-      shadowColor: '#000',
-      shadowOffset: { width: 6, height: 6 },
-      shadowOpacity: 1,
-      shadowRadius: 6,
-      margin: 10,
-    },
-    buttonInnerShadow: {
-      shadowColor: '#333',
-      shadowOffset: { width: -6, height: -6 },
-      shadowOpacity: 0.7,
-      shadowRadius: 6,
-    },
-    neumorphButton: {
-      borderRadius: 50,
-      backgroundColor: '#1E1E1E',
-      alignItems: 'center',
-      justifyContent: 'center',
-      elevation: 4,
-    },
-    buttonText: {
-      fontSize: 35,
-      color: '#747474',
-    },
-    reverseButtonOuterShadow: {
-      shadowColor: '#000',
-      shadowOffset: { width: 6, height: 6 },
-      shadowOpacity: 1,
-      shadowRadius: 6,
-      margin: 10,
-      alignSelf: 'center',
-    },
-    reverseButtonInnerShadow: {
-      shadowColor: '#333',
-      shadowOffset: { width: -6, height: -6 },
-      shadowOpacity: 0.7,
-      shadowRadius: 6,
-    },
-    reverseButton: {
-      borderRadius: 50,
-      backgroundColor: '#1E1E1E',
-      alignItems: 'center',
-      justifyContent: 'center',
-      elevation: 4,
-    },
-    reverseButtonText: {
-      fontSize: 25,
-      color: '#F63356',
-    },
-  });
+  container: {
+    backgroundColor: '#1A1A1A',
+    flex: 1,
+    alignItems: 'center',
+    paddingVertical: 20,
+    paddingTop: 70, // Adding top padding to account for the notch
+  },
+  inputContainer: {
+    width: '90%',
+    marginBottom: 10,
+  },
+  inputRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 10,
+    backgroundColor: '#1E1E1E',
+    borderRadius: 25,
+    padding: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 6, height: 6 },
+    shadowOpacity: 1,
+    shadowRadius: 6,
+  },
+  circle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#1E1E1E',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#333',
+    shadowOffset: { width: -6, height: -6 },
+    shadowOpacity: 0.7,
+    shadowRadius: 6,
+  },
+  unitText: {
+    color: '#F63356',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  unitName: {
+    color: '#747474',
+    fontSize: 18,
+    marginHorizontal: 10,
+    flex: 1,
+  },
+  inputField: {
+    color: '#747474',
+    fontSize: 18,
+    flex: 1,
+    textAlign: 'right',
+  },
+  buttonsContainer: {
+    width: '100%',
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+    marginTop: 20,
+  },
+  buttonsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 10,
+  },
+  buttonOuterShadow: {
+    shadowColor: '#000',
+    shadowOffset: { width: 6, height: 6 },
+    shadowOpacity: 1,
+    shadowRadius: 6,
+    margin: 10,
+  },
+  buttonInnerShadow: {
+    shadowColor: '#333',
+    shadowOffset: { width: -6, height: -6 },
+    shadowOpacity: 0.7,
+    shadowRadius: 6,
+  },
+  neumorphButton: {
+    borderRadius: 50,
+    backgroundColor: '#1E1E1E',
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 4,
+  },
+  buttonText: {
+    fontSize: 35,
+    color: '#747474',
+  },
+  reverseButtonOuterShadow: {
+    shadowColor: '#000',
+    shadowOffset: { width: 6, height: 6 },
+    shadowOpacity: 1,
+    shadowRadius: 6,
+    margin: 10,
+    alignSelf: 'center',
+  },
+  reverseButtonInnerShadow: {
+    shadowColor: '#333',
+    shadowOffset: { width: -6, height: -6 },
+    shadowOpacity: 0.7,
+    shadowRadius: 6,
+  },
+  reverseButton: {
+    borderRadius: 50,
+    backgroundColor: '#1E1E1E',
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 4,
+  },
+  reverseButtonText: {
+    fontSize: 25,
+    color: '#F63356',
+  },
+});
 
-export default Weight;
+export default Pressure;

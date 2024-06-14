@@ -9,18 +9,19 @@ const Converter = ({ navigation }) => {
 
   const items = [
     { name: 'Length', icon: <ChartBarIcon color="#F63356" size={buttonSize / 2} />, navigateTo: 'Length' },
-    { name: 'Area', icon: <ViewColumnsIcon color="#F63356" size={buttonSize / 2} />,   },
-    { name: 'Volume', icon: <CubeIcon color="#F63356" size={buttonSize / 2} />,   },
-    { name: 'Pressure', icon: <MinusCircleIcon color="#F63356" size={buttonSize / 2} />,  },
-    { name: 'Power', icon: <BoltIcon color="#F63356" size={buttonSize / 2} />,  },
+    { name: 'Area', icon: <ViewColumnsIcon color="#F63356" size={buttonSize / 2} />, navigateTo:'Area' },
+    { name: 'Volume', icon: <CubeIcon color="#F63356" size={buttonSize / 2} />,   navigateTo:'Volume'},
+    { name: 'Pressure', icon: <MinusCircleIcon color="#F63356" size={buttonSize / 2} />,  navigateTo:'Pressure'},
+    { name: 'Power', icon: <BoltIcon color="#F63356" size={buttonSize / 2} />,  navigateTo:'Power'},
     { name: 'Weight', icon: <ScaleIcon color="#F63356" size={buttonSize / 2} />,  navigateTo: 'Weight' },
-    { name: 'Speed', icon: <RocketLaunchIcon color="#F63356" size={buttonSize / 2} />,  },
+    { name: 'Speed', icon: <RocketLaunchIcon color="#F63356" size={buttonSize / 2} />, navigateTo: 'Speed' },
     { name: 'Temperature', icon: <SunIcon color="#F63356" size={buttonSize / 2} />,  navigateTo: 'Temperature'},
-    { name: 'Time', icon: <ClockIcon color="#F63356" size={buttonSize / 2} />,  },
+    { name: 'Time', icon: <ClockIcon color="#F63356" size={buttonSize / 2} />, navigateTo:'Time' },
   ];
 
   return (
     <View style={styles.container}>
+        <Text style={{color:'#F63356',fontSize:30,marginTop:60,fontWeight:'500'}}>Unit Conversion</Text>
       <View style={styles.buttonsContainer}>
         {items.map((item, index) => (
           <View key={index} style={styles.itemContainer}>
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     paddingHorizontal: 20,
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 70,
     gap: 30,
   },
   itemContainer: {

@@ -85,9 +85,9 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: '90%',
-    height: '30%', // Fixed height to maintain size
+    height: '20%', // Fixed height to maintain size
     justifyContent: 'center',
-    marginTop: 20,
+    marginTop: 80,
   },
   inputOuterShadow: {
     shadowColor: '#000',
@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 10,
+    marginTop:10
   },
   buttonOuterShadow: {
     shadowColor: '#000',

@@ -27,12 +27,12 @@ const Length = () => {
   };
 
   const convertMetersToFeet = (meters) => {
-    const feet = (parseFloat(meters) * 3.28084).toFixed(2);
+    const feet = (parseFloat(meters) * 3.28084).toFixed(4);
     return isNaN(feet) ? '' : feet;
   };
 
   const convertFeetToMeters = (feet) => {
-    const meters = (parseFloat(feet) / 3.28084).toFixed(2);
+    const meters = (parseFloat(feet) / 3.28084).toFixed(4);
     return isNaN(meters) ? '' : meters;
   };
 
@@ -106,118 +106,119 @@ const Length = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#1A1A1A',
-    flex: 1,
-    alignItems: 'center',
-    paddingVertical: 20,
-  },
-  inputContainer: {
-    width: '90%',
-    marginBottom: 20,
-  },
-  inputRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 10,
-    backgroundColor: '#1E1E1E',
-    borderRadius: 25,
-    padding: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
-    shadowOpacity: 1,
-    shadowRadius: 6,
-  },
-  circle: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#1E1E1E',
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#333',
-    shadowOffset: { width: -6, height: -6 },
-    shadowOpacity: 0.7,
-    shadowRadius: 6,
-  },
-  unitText: {
-    color: '#F63356',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  unitName: {
-    color: '#747474',
-    fontSize: 18,
-    marginHorizontal: 10,
-    flex: 1,
-  },
-  inputField: {
-    color: '#747474',
-    fontSize: 18,
-    flex: 1,
-    textAlign: 'right',
-  },
-  buttonsContainer: {
-    width: '100%',
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 10,
-    marginTop: 20,
-  },
-  buttonsRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 10,
-  },
-  buttonOuterShadow: {
-    shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
-    shadowOpacity: 1,
-    shadowRadius: 6,
-    margin: 10,
-  },
-  buttonInnerShadow: {
-    shadowColor: '#333',
-    shadowOffset: { width: -6, height: -6 },
-    shadowOpacity: 0.7,
-    shadowRadius: 6,
-  },
-  neumorphButton: {
-    borderRadius: 50,
-    backgroundColor: '#1E1E1E',
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 4,
-  },
-  buttonText: {
-    fontSize: 35,
-    color: '#747474',
-  },
-  reverseButtonOuterShadow: {
-    shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
-    shadowOpacity: 1,
-    shadowRadius: 6,
-    margin: 10,
-    alignSelf: 'center',
-  },
-  reverseButtonInnerShadow: {
-    shadowColor: '#333',
-    shadowOffset: { width: -6, height: -6 },
-    shadowOpacity: 0.7,
-    shadowRadius: 6,
-  },
-  reverseButton: {
-    borderRadius: 50,
-    backgroundColor: '#1E1E1E',
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 4,
-  },
-  reverseButtonText: {
-    fontSize: 25,
-    color: '#F63356',
-  },
-});
+    container: {
+      backgroundColor: '#1A1A1A',
+      flex: 1,
+      alignItems: 'center',
+      paddingVertical: 20,
+      paddingTop: 70, // Adding top padding to account for the notch
+    },
+    inputContainer: {
+      width: '90%',
+      marginBottom: 10,
+    },
+    inputRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginVertical: 10,
+      backgroundColor: '#1E1E1E',
+      borderRadius: 25,
+      padding: 10,
+      shadowColor: '#000',
+      shadowOffset: { width: 6, height: 6 },
+      shadowOpacity: 1,
+      shadowRadius: 6,
+    },
+    circle: {
+      width: 40,
+      height: 40,
+      borderRadius: 20,
+      backgroundColor: '#1E1E1E',
+      alignItems: 'center',
+      justifyContent: 'center',
+      shadowColor: '#333',
+      shadowOffset: { width: -6, height: -6 },
+      shadowOpacity: 0.7,
+      shadowRadius: 6,
+    },
+    unitText: {
+      color: '#F63356',
+      fontSize: 18,
+      fontWeight: 'bold',
+    },
+    unitName: {
+      color: '#747474',
+      fontSize: 18,
+      marginHorizontal: 10,
+      flex: 1,
+    },
+    inputField: {
+      color: '#747474',
+      fontSize: 18,
+      flex: 1,
+      textAlign: 'right',
+    },
+    buttonsContainer: {
+      width: '100%',
+      flex: 1,
+      justifyContent: 'center',
+      paddingHorizontal: 10,
+      marginTop: 20,
+    },
+    buttonsRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      marginBottom: 10,
+    },
+    buttonOuterShadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 6, height: 6 },
+      shadowOpacity: 1,
+      shadowRadius: 6,
+      margin: 10,
+    },
+    buttonInnerShadow: {
+      shadowColor: '#333',
+      shadowOffset: { width: -6, height: -6 },
+      shadowOpacity: 0.7,
+      shadowRadius: 6,
+    },
+    neumorphButton: {
+      borderRadius: 50,
+      backgroundColor: '#1E1E1E',
+      alignItems: 'center',
+      justifyContent: 'center',
+      elevation: 4,
+    },
+    buttonText: {
+      fontSize: 35,
+      color: '#747474',
+    },
+    reverseButtonOuterShadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 6, height: 6 },
+      shadowOpacity: 1,
+      shadowRadius: 6,
+      margin: 10,
+      alignSelf: 'center',
+    },
+    reverseButtonInnerShadow: {
+      shadowColor: '#333',
+      shadowOffset: { width: -6, height: -6 },
+      shadowOpacity: 0.7,
+      shadowRadius: 6,
+    },
+    reverseButton: {
+      borderRadius: 50,
+      backgroundColor: '#1E1E1E',
+      alignItems: 'center',
+      justifyContent: 'center',
+      elevation: 4,
+    },
+    reverseButtonText: {
+      fontSize: 25,
+      color: '#F63356',
+    },
+  });
 
 export default Length;

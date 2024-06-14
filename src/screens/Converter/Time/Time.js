@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions } from 'react-native';
 import { ArrowPathIcon } from "react-native-heroicons/outline";
 
-const Weight = () => {
+const Time = () => {
   const [input, setInput] = useState('');
   const [convertedValue, setConvertedValue] = useState('');
   const [isMeterToFoot, setIsMeterToFoot] = useState(true);
@@ -27,12 +27,12 @@ const Weight = () => {
   };
 
   const convertMetersToFeet = (meters) => {
-    const feet = (parseFloat(meters) * 1000).toFixed(4);
+    const feet = (parseFloat(meters)*60*60).toFixed(4);
     return isNaN(feet) ? '' : feet;
   };
 
   const convertFeetToMeters = (feet) => {
-    const meters = (parseFloat(feet) / 1000).toFixed(4);
+    const meters = (parseFloat(feet)/3600).toFixed(4);
     return isNaN(meters) ? '' : meters;
   };
 
@@ -53,8 +53,8 @@ const Weight = () => {
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <View style={styles.inputRow}>
-          <View style={styles.circle}><Text style={styles.unitText}>{isMeterToFoot ? 'kg' : 'g'}</Text></View>
-          <Text style={styles.unitName}>{isMeterToFoot ? 'Kilogram' : 'Gram'}</Text>
+          <View style={styles.circle}><Text style={styles.unitText}>{isMeterToFoot ? 'hr' : 'sec'}</Text></View>
+          <Text style={styles.unitName}>{isMeterToFoot ? 'Hour' : 'Second'}</Text>
           <TextInput
             style={styles.inputField}
             value={input}
@@ -75,8 +75,8 @@ const Weight = () => {
           </View>
         </TouchableOpacity>
         <View style={styles.inputRow}>
-          <View style={styles.circle}><Text style={styles.unitText}>{isMeterToFoot ? 'g' : 'kg'}</Text></View>
-          <Text style={styles.unitName}>{isMeterToFoot ? 'Gram' : 'Kilogram'}</Text>
+          <View style={styles.circle}><Text style={styles.unitText}>{isMeterToFoot ? 'sec' : 'hr'}</Text></View>
+          <Text style={styles.unitName}>{isMeterToFoot ? 'Second' : 'Hour'}</Text>
           <TextInput
             style={styles.inputField}
             value={convertedValue}
@@ -221,4 +221,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default Weight;
+export default Time;
