@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { useWindowDimensions } from 'react-native';
+import { useWindowDimensions, View } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import Calculator from './src/screens/Calculator/Calculator';
@@ -16,8 +16,9 @@ import Power from './src/screens/Converter/Power/Power';
 import Pressure from './src/screens/Converter/Pressure/Pressure';
 import Volume from './src/screens/Converter/Volume/Volume';
 import Area from './src/screens/Converter/Area/Area';
-import { UserIcon } from 'react-native-heroicons/solid';
+import { FunnelIcon, UserIcon } from 'react-native-heroicons/solid';
 import BodyMassIndex from './src/screens/Body/Body';
+import Milage from './src/screens/Converter/Milage/Milage';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -75,7 +76,12 @@ const App = () => {
             drawerIcon: ({ color, size }) => (
               <HomeIcon color={color} size={size} />
             ),
-            headerShown: false,
+            headerTitleAlign:'left',
+            headerStyle:{
+              backgroundColor:'#1A1A1A'
+            },
+            headerTintColor:'white'
+
           }}
         />
         <Drawer.Screen
@@ -85,7 +91,14 @@ const App = () => {
             drawerIcon: ({ color, size }) => (
               <CalculatorIcon color={color} size={size} />
             ),
-            headerShown: false,
+            title: 'Calculator',
+            headerTitleAlign:'left',
+            headerStyle:{
+              backgroundColor:'#1A1A1A'
+            },
+            headerTintColor:'white'
+            
+
           }}
         />
         <Drawer.Screen
@@ -96,7 +109,11 @@ const App = () => {
               <ArrowPathIcon color={color} size={size} />
             ),
             title: 'Converter',
-            headerShown: false,
+            headerTitleAlign:'left',
+            headerStyle:{
+              backgroundColor:'#1A1A1A'
+            },
+            headerTintColor:'white'
           }}
         />
         <Drawer.Screen
@@ -107,7 +124,28 @@ const App = () => {
               <UserIcon color={color} size={size} />
             ),
             title: 'BMI',
-            headerShown: false,
+            headerTitleAlign:'left',
+            headerStyle:{
+              backgroundColor:'#1A1A1A'
+            },
+            headerTintColor:'white'
+
+          }}
+        />
+        <Drawer.Screen
+          name="Milage"
+          component={Milage}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <FunnelIcon color={color} size={size} />
+            ),
+            title: 'Milage',
+            headerTitleAlign:'left',
+            headerStyle:{
+              backgroundColor:'#1A1A1A'
+            },
+            headerTintColor:'white'
+
           }}
         />
       </Drawer.Navigator>

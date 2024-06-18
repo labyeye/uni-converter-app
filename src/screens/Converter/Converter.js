@@ -21,7 +21,6 @@ const Converter = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-        <Text style={{color:'#F63356',fontSize:30,marginTop:60,fontWeight:'500'}}>Unit Conversion</Text>
       <View style={styles.buttonsContainer}>
         {items.map((item, index) => (
           <View key={index} style={styles.itemContainer}>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
-import { UserIcon, CalculatorIcon, ArrowPathIcon} from 'react-native-heroicons/solid';
+import { UserIcon, CalculatorIcon, ArrowPathIcon, FunnelIcon} from 'react-native-heroicons/solid';
 
 const Dashboard = ({ navigation }) => {
   const [input, setInput] = useState('');
@@ -11,12 +11,14 @@ const Dashboard = ({ navigation }) => {
     { name: ' Unit Converter', icon: <ArrowPathIcon color="#F63356" size={buttonSize / 2} />, navigateTo: 'ConverterStack' },
     { name: 'BMI ', icon: <UserIcon color="#F63356" size={buttonSize / 2} />, navigateTo:'BodyMassIndex' },
     { name: 'Calculator', icon: <CalculatorIcon color="#F63356" size={buttonSize / 2} />,   navigateTo:'Calculator'},
+    { name: 'Milage', icon: <FunnelIcon color="#F63356" size={buttonSize / 2} />,   navigateTo:'Milage'},
+
     
   ];
 
   return (
     <View style={styles.container}>
-        <Text style={{color:'#F63356',fontSize:30,marginTop:60,fontWeight:'500'}}>Dashboard</Text>
+      <Text style={{fontSize:40,color:"#F63356",paddingTop:40}}>Welcome</Text>
       <View style={styles.buttonsContainer}>
         {items.map((item, index) => (
           <View key={index} style={styles.itemContainer}>

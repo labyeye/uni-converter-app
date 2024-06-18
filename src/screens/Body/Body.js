@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput ,Linking} from 'react-native';
 
 const BodyMassIndex = () => {
   const [weightInput, setWeightInput] = useState('');
   const [heightInput, setHeightInput] = useState('');
   const [bmiResult, setBmiResult] = useState('');
   const [bmiMessage, setBmiMessage] = useState('');
+
+  const openLink = (url) => {
+    Linking.openURL(url).catch(err => console.error("Failed to open URL:", err));
+  };
 
   const calculateBMI = () => {
     const weight = parseFloat(weightInput);
@@ -34,7 +38,6 @@ const BodyMassIndex = () => {
 
   return (
     <View style={styles.container}>
-              <Text style={{color:'#F63356',fontSize:30,margin:10,fontWeight:'500'}}>BMI Calculator</Text>
 
       <View style={styles.inputContainer}>
         <View style={styles.inputRow}>
@@ -75,6 +78,10 @@ const BodyMassIndex = () => {
       <TouchableOpacity style={styles.calculateButton} onPress={calculateBMI}>
         <Text style={styles.calculateButtonText}>Calculate BMI</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={{marginTop:30}}onPress={() => openLink('https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmi_tbl.htm')
+      }>
+      <Text style={{color:'white'}}>See Chart for More Details</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -96,7 +103,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
     backgroundColor: '#1E1E1E',
-    borderRadius: 25,
+    borderRadius: 40,
     padding: 10,
     shadowColor: '#000',
     shadowOffset: { width: 6, height: 6 },

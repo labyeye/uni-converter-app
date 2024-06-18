@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       paddingVertical: 20,
-      paddingTop: 70, // Adding top padding to account for the notch
+      paddingTop: 20, // Adding top padding to account for the notch
     },
     inputContainer: {
       width: '90%',
