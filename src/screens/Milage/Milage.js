@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
-
+import { MapPinIcon, CurrencyDollarIcon, ChartBarIcon } from 'react-native-heroicons/outline';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 const Milage = () => {
   const [distance, setDistance] = useState('');
   const [fuel, setFuel] = useState('');
@@ -21,9 +22,9 @@ const Milage = () => {
 
   return (
     <View style={styles.container}>
-
       <View style={styles.inputContainer}>
         <View style={styles.inputRow}>
+          <MapPinIcon size={24} color="#FE7A36" style={styles.icon} />
           <Text style={styles.unitName}>Distance in (km)</Text>
           <TextInput
             style={[styles.inputField, styles.neumorphTextInput]}
@@ -35,6 +36,7 @@ const Milage = () => {
           />
         </View>
         <View style={styles.inputRow}>
+          <MaterialCommunityIcons name='fuel' size={24} color='#FE7A36' style={styles.icon}/>
           <Text style={styles.unitName}>Fuel in (litre)</Text>
           <TextInput
             style={[styles.inputField, styles.neumorphTextInput]}
@@ -46,6 +48,7 @@ const Milage = () => {
           />
         </View>
         <View style={styles.inputRow}>
+          <CurrencyDollarIcon size={24} color="#FE7A36" style={styles.icon} />
           <Text style={styles.unitName}>Price in (INR)</Text>
           <TextInput
             style={[styles.inputField, styles.neumorphTextInput]}
@@ -57,9 +60,10 @@ const Milage = () => {
           />
         </View>
         <View style={styles.inputRow}>
+          <ChartBarIcon size={24} color="#FE7A36" style={styles.icon} />
           <Text style={styles.unitName}>Mileage (km/l)</Text>
           <TextInput
-            style={[styles.inputField, styles.neumorphTextInput, { backgroundColor: 'transparent', fontSize: 24 }]}
+            style={[styles.inputField, styles.neumorphTextInput, styles.mileageResultInput]}
             value={mileageResult}
             editable={false}
           />
@@ -89,7 +93,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 10,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#1A1A1A',
     borderRadius: 40,
     padding: 10,
     shadowColor: '#000',
@@ -97,10 +101,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 6,
   },
+  icon: {
+    marginRight: 10,
+    marginLeft: 5,
+  },
   unitName: {
     color: '#747474',
     fontSize: 15,
     marginRight: 10,
+    width: 120,
   },
   inputField: {
     color: '#747474',
@@ -116,10 +125,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.7,
     shadowRadius: 3,
     elevation: 3,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#1A1A1A',
+  },
+  mileageResultInput: {
+    backgroundColor: 'transparent',
+    fontSize: 24,
   },
   calculateButton: {
-    backgroundColor: '#F63356',
+    backgroundColor: '#FE7A36',
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 25,

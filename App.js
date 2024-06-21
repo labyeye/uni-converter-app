@@ -18,7 +18,10 @@ import Volume from './src/screens/Converter/Volume/Volume';
 import Area from './src/screens/Converter/Area/Area';
 import { FunnelIcon, UserIcon } from 'react-native-heroicons/solid';
 import BodyMassIndex from './src/screens/Body/Body';
-import Milage from './src/screens/Converter/Milage/Milage';
+import Milage from './src/screens/Milage/Milage';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import IonIcons from 'react-native-vector-icons/Ionicons';
+
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -62,7 +65,7 @@ const App = () => {
           drawerStyle: {
             backgroundColor: '#1A1A1A', // Change drawer background color
           },
-          drawerActiveTintColor: '#F63356', // Active item label color
+          drawerActiveTintColor: '#FE7A36', // Active item label color
           drawerInactiveTintColor: '#747474', // Inactive item label color
           drawerLabelStyle: {
             fontSize: 18,
@@ -121,7 +124,7 @@ const App = () => {
           component={BodyMassIndex}
           options={{
             drawerIcon: ({ color, size }) => (
-              <UserIcon color={color} size={size} />
+              <IonIcons name='body' size={size} color={color}/>
             ),
             title: 'BMI',
             headerTitleAlign:'left',
@@ -137,7 +140,7 @@ const App = () => {
           component={Milage}
           options={{
             drawerIcon: ({ color, size }) => (
-              <FunnelIcon color={color} size={size} />
+              <MaterialCommunityIcons name='fuel' size={size} color={color}/>
             ),
             title: 'Milage',
             headerTitleAlign:'left',

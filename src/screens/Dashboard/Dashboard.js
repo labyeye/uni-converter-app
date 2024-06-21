@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
-import { UserIcon, CalculatorIcon, ArrowPathIcon, FunnelIcon} from 'react-native-heroicons/solid';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
+import { UserIcon, CalculatorIcon, ArrowPathIcon, FunnelIcon } from 'react-native-heroicons/solid';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import IonIcons from 'react-native-vector-icons/Ionicons';
 
 const Dashboard = ({ navigation }) => {
+  
   const [input, setInput] = useState('');
   const screenWidth = Dimensions.get('window').width;
   let buttonSize = (screenWidth <= 375) ? (screenWidth - 90) / 3 : (screenWidth - 60) / 3;
 
   const items = [
-    { name: ' Unit Converter', icon: <ArrowPathIcon color="#F63356" size={buttonSize / 2} />, navigateTo: 'ConverterStack' },
-    { name: 'BMI ', icon: <UserIcon color="#F63356" size={buttonSize / 2} />, navigateTo:'BodyMassIndex' },
-    { name: 'Calculator', icon: <CalculatorIcon color="#F63356" size={buttonSize / 2} />,   navigateTo:'Calculator'},
-    { name: 'Milage', icon: <FunnelIcon color="#F63356" size={buttonSize / 2} />,   navigateTo:'Milage'},
-
-    
+    { name: 'Unit Converter', icon: <ArrowPathIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'ConverterStack' },
+    { name: 'BMI', icon: <IonIcons name='body'color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'BodyMassIndex' },
+    { name: 'Calculator', icon: <CalculatorIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'Calculator' },
+    { name: 'Milage', icon: <MaterialCommunityIcons name='fuel' size={buttonSize / 2} color='#FE7A36'/>, navigateTo: 'Milage' },
   ];
 
   return (
     <View style={styles.container}>
-      <Text style={{fontSize:40,color:"#F63356",paddingTop:40}}>Welcome</Text>
+      <Text style={styles.welcomeText}>Welcome</Text>
       <View style={styles.buttonsContainer}>
         {items.map((item, index) => (
           <View key={index} style={styles.itemContainer}>
@@ -36,6 +37,7 @@ const Dashboard = ({ navigation }) => {
           </View>
         ))}
       </View>
+      
     </View>
   );
 };
@@ -45,6 +47,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A1A1A',
     flex: 1,
     alignItems: 'center',
+  },
+  welcomeText: {
+    fontSize: 40,
+    color: "#FE7A36",
+    paddingTop: 40,
   },
   buttonsContainer: {
     width: '100%',
@@ -75,7 +82,7 @@ const styles = StyleSheet.create({
   },
   neumorphButton: {
     borderRadius: 20,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#1A1A1A',
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 4,

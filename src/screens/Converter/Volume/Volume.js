@@ -65,12 +65,13 @@ const Volume = () => {
             keyboardType="numeric"
             placeholder="0"
             placeholderTextColor="#747474"
+            editable={false}
           />
         </View>
         <TouchableOpacity onPress={handleReverse} style={styles.reverseButtonOuterShadow}>
           <View style={styles.reverseButtonInnerShadow}>
             <View style={[styles.reverseButton, { width: reverseButtonSize, height: reverseButtonSize }]}>
-              <ArrowPathIcon color="#F63356" size={reverseButtonSize * 0.5} />
+              <ArrowPathIcon color="#FE7A36" size={reverseButtonSize * 0.5} />
             </View>
           </View>
         </TouchableOpacity>
@@ -93,7 +94,7 @@ const Volume = () => {
               <TouchableOpacity key={index} style={styles.buttonOuterShadow} onPress={() => handleButtonPress(symbol)}>
                 <View style={styles.buttonInnerShadow}>
                   <View style={[styles.neumorphButton, { width: buttonSize, height: buttonSize }]}>
-                    <Text style={[styles.buttonText, { color: (symbol === 'C' || symbol === '⌫') ? '#F63356' : '#747474' }]}>{symbol}</Text>
+                    <Text style={[styles.buttonText, { color: (symbol === 'C' || symbol === '⌫') ? '#FE7A36' : '#747474' }]}>{symbol}</Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       marginVertical: 10,
-      backgroundColor: '#1E1E1E',
+      backgroundColor: '#1A1A1A',
       borderRadius: 25,
       padding: 10,
       shadowColor: '#000',
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
       width: 40,
       height: 40,
       borderRadius: 20,
-      backgroundColor: '#1E1E1E',
+      backgroundColor: '#1A1A1A',
       alignItems: 'center',
       justifyContent: 'center',
       shadowColor: '#333',
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
       shadowRadius: 6,
     },
     unitText: {
-      color: '#F63356',
+      color: '#FE7A36',
       fontSize: 18,
       fontWeight: 'bold',
     },
@@ -186,7 +187,7 @@ const styles = StyleSheet.create({
     },
     neumorphButton: {
       borderRadius: 50,
-      backgroundColor: '#1E1E1E',
+      backgroundColor: '#1A1A1A',
       alignItems: 'center',
       justifyContent: 'center',
       elevation: 4,
@@ -211,14 +212,14 @@ const styles = StyleSheet.create({
     },
     reverseButton: {
       borderRadius: 50,
-      backgroundColor: '#1E1E1E',
+      backgroundColor: '#1A1A1A',
       alignItems: 'center',
       justifyContent: 'center',
       elevation: 4,
     },
     reverseButtonText: {
       fontSize: 25,
-      color: '#F63356',
+      color: '#FE7A36',
     },
   });
 

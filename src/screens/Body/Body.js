@@ -1,5 +1,21 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput ,Linking} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  Linking,
+} from 'react-native';
+import {
+  ArrowsUpDownIcon,
+  ScaleIcon,
+  UserCircleIcon,
+} from 'react-native-heroicons/solid';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import IonIcons from 'react-native-vector-icons/Ionicons';
+
 
 const BodyMassIndex = () => {
   const [weightInput, setWeightInput] = useState('');
@@ -7,8 +23,10 @@ const BodyMassIndex = () => {
   const [bmiResult, setBmiResult] = useState('');
   const [bmiMessage, setBmiMessage] = useState('');
 
-  const openLink = (url) => {
-    Linking.openURL(url).catch(err => console.error("Failed to open URL:", err));
+  const openLink = url => {
+    Linking.openURL(url).catch(err =>
+      console.error('Failed to open URL:', err),
+    );
   };
 
   const calculateBMI = () => {
@@ -38,9 +56,9 @@ const BodyMassIndex = () => {
 
   return (
     <View style={styles.container}>
-
       <View style={styles.inputContainer}>
         <View style={styles.inputRow}>
+          <FontAwesome5 name='weight' size={24} color="#FE7A36" style={styles.icon} />
           <Text style={styles.unitName}>Weight (kg)</Text>
           <TextInput
             style={[styles.inputField, styles.neumorphTextInput]}
@@ -52,6 +70,8 @@ const BodyMassIndex = () => {
           />
         </View>
         <View style={styles.inputRow}>
+        <MaterialCommunityIcons name='human-male-height' size={24} color='#FE7A36' style={styles.icon}/>
+
           <Text style={styles.unitName}>Height (cm)</Text>
           <TextInput
             style={[styles.inputField, styles.neumorphTextInput]}
@@ -63,24 +83,37 @@ const BodyMassIndex = () => {
           />
         </View>
         <View style={styles.inputRow}>
+          <IonIcons name='body'color="#FE7A36" size={24}style={styles.icon} />
           <Text style={styles.unitName}>BMI</Text>
           <TextInput
-            style={[styles.inputField, styles.neumorphTextInput, { backgroundColor: 'transparent', fontSize: 24 }]}
+            style={[
+              styles.inputField,
+              styles.neumorphTextInput,
+              {backgroundColor: 'transparent', fontSize: 24},
+            ]}
             value={bmiResult}
             editable={false}
           />
         </View>
         {bmiMessage ? (
-          <Text style={styles.bmiMessage}>{`Your BMI is ${bmiResult}. ${bmiMessage}.`}</Text>
+          <Text
+            style={
+              styles.bmiMessage
+            }>{`Your BMI is ${bmiResult}. ${bmiMessage}.`}</Text>
         ) : null}
       </View>
-      
+
       <TouchableOpacity style={styles.calculateButton} onPress={calculateBMI}>
         <Text style={styles.calculateButtonText}>Calculate BMI</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={{marginTop:30}}onPress={() => openLink('https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmi_tbl.htm')
-      }>
-      <Text style={{color:'white'}}>See Chart for More Details</Text>
+      <TouchableOpacity
+        style={{marginTop: 30}}
+        onPress={() =>
+          openLink(
+            'https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmi_tbl.htm',
+          )
+        }>
+        <Text style={{color: 'white'}}>See Chart for More Details</Text>
       </TouchableOpacity>
     </View>
   );
@@ -98,15 +131,19 @@ const styles = StyleSheet.create({
     width: '90%',
     marginBottom: 10,
   },
+  icon: {
+    marginRight: 10,
+    marginLeft: 5,
+  },
   inputRow: {
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 10,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#1A1A1A',
     borderRadius: 40,
     padding: 10,
     shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
+    shadowOffset: {width: 6, height: 6},
     shadowOpacity: 1,
     shadowRadius: 6,
   },
@@ -125,20 +162,20 @@ const styles = StyleSheet.create({
   },
   neumorphTextInput: {
     shadowColor: '#000',
-    shadowOffset: { width: -2, height: -2 },
+    shadowOffset: {width: -2, height: -2},
     shadowOpacity: 0.7,
     shadowRadius: 3,
     elevation: 3,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#1A1A1A',
   },
   calculateButton: {
-    backgroundColor: '#F63356',
+    backgroundColor: '#FE7A36',
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 25,
     marginTop: 20,
     shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
+    shadowOffset: {width: 6, height: 6},
     shadowOpacity: 0.7,
     shadowRadius: 6,
   },

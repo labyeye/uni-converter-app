@@ -46,6 +46,7 @@ const Calculator = () => {
             />
           </View>
         </View>
+        
       </View>
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonsRow}>
@@ -53,7 +54,7 @@ const Calculator = () => {
             <TouchableOpacity key={index} style={styles.buttonOuterShadow} onPress={() => handleButtonPress(symbol)}>
               <View style={styles.buttonInnerShadow}>
                 <View style={[styles.neumorphButton, { width: buttonSize, height: buttonSize }]}>
-                  <Text style={{ fontSize: 35, color: '#F63356' }}>{symbol}</Text>
+                  <Text style={{ fontSize: 35, color: '#FE7A36' }}>{symbol}</Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -85,32 +86,32 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: '90%',
-    height: '20%', // Fixed height to maintain size
+    height: '20%',
     justifyContent: 'center',
     marginTop: 30,
   },
   inputOuterShadow: {
-    shadowColor: '#000',
-    shadowOffset: { width: -6, height: -6 }, // Dark shadow top-left
+    shadowColor: '#000000',
+    shadowOffset: { width: -6, height: -6 },
     shadowOpacity: 0.6,
     shadowRadius: 6,
-    backgroundColor: '#1E1E1E',
-    borderRadius: 25,
+    backgroundColor: '#1A1A1A',
+    borderRadius: 15, // Adjusted border radius for rounded rectangle
     padding: 10,
   },
   inputInnerShadow: {
-    shadowColor: '#555',
-    shadowOffset: { width: 6, height: 6 }, // Light shadow bottom-right
-    shadowOpacity: 0.6,
-    shadowRadius: 6,
-    backgroundColor: '#1E1E1E',
-    borderRadius: 25,
+    shadowColor: '#202020',
+    shadowOffset: { width: 3, height: 9 },
+    shadowOpacity: 8,
+    shadowRadius: 5,
+    backgroundColor: '#1A1A1A',
+    borderRadius: 15, // Adjusted border radius for rounded rectangle
   },
   neumorphInput: {
     width: '100%',
     height: '100%',
-    borderRadius: 25,
-    backgroundColor: '#1E1E1E',
+    borderRadius: 15, // Adjusted border radius for rounded rectangle
+    backgroundColor: '#1A1A1A',
     textAlign: 'right',
     fontSize: 50,
     color: '#747474',
@@ -122,13 +123,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 10,
-    marginTop: 20, // Add marginTop to ensure spacing on smaller screens
+    marginTop: 20,
   },
   buttonsRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 10,
-    marginTop:10
   },
   buttonOuterShadow: {
     shadowColor: '#000',
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   neumorphButton: {
     borderRadius: 50,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#1A1A1A',
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 4,

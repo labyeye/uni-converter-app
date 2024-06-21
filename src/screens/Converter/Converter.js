@@ -8,15 +8,15 @@ const Converter = ({ navigation }) => {
   let buttonSize = (screenWidth <= 375) ? (screenWidth - 110) / 4 : (screenWidth - 100) / 4;
 
   const items = [
-    { name: 'Length', icon: <ChartBarIcon color="#F63356" size={buttonSize / 2} />, navigateTo: 'Length' },
-    { name: 'Area', icon: <ViewColumnsIcon color="#F63356" size={buttonSize / 2} />, navigateTo:'Area' },
-    { name: 'Volume', icon: <CubeIcon color="#F63356" size={buttonSize / 2} />,   navigateTo:'Volume'},
-    { name: 'Pressure', icon: <MinusCircleIcon color="#F63356" size={buttonSize / 2} />,  navigateTo:'Pressure'},
-    { name: 'Power', icon: <BoltIcon color="#F63356" size={buttonSize / 2} />,  navigateTo:'Power'},
-    { name: 'Weight', icon: <ScaleIcon color="#F63356" size={buttonSize / 2} />,  navigateTo: 'Weight' },
-    { name: 'Speed', icon: <RocketLaunchIcon color="#F63356" size={buttonSize / 2} />, navigateTo: 'Speed' },
-    { name: 'Temperature', icon: <SunIcon color="#F63356" size={buttonSize / 2} />,  navigateTo: 'Temperature'},
-    { name: 'Time', icon: <ClockIcon color="#F63356" size={buttonSize / 2} />, navigateTo:'Time' },
+    { name: 'Length', icon: <ChartBarIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'Length' },
+    { name: 'Area', icon: <ViewColumnsIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo:'Area' },
+    { name: 'Volume', icon: <CubeIcon color="#FE7A36" size={buttonSize / 2} />,   navigateTo:'Volume'},
+    { name: 'Pressure', icon: <MinusCircleIcon color="#FE7A36" size={buttonSize / 2} />,  navigateTo:'Pressure'},
+    { name: 'Power', icon: <BoltIcon color="#FE7A36" size={buttonSize / 2} />,  navigateTo:'Power'},
+    { name: 'Weight', icon: <ScaleIcon color="#FE7A36" size={buttonSize / 2} />,  navigateTo: 'Weight' },
+    { name: 'Speed', icon: <RocketLaunchIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'Speed' },
+    { name: 'Temperature', icon: <SunIcon color="#FE7A36" size={buttonSize / 2} />,  navigateTo: 'Temperature'},
+    { name: 'Time', icon: <ClockIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo:'Time' },
   ];
 
   return (
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   neumorphButton: {
     borderRadius: 50,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#1A1A1A',
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 4,
