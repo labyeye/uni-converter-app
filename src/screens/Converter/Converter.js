@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { ChartBarIcon, ViewColumnsIcon, CubeIcon, MinusCircleIcon, BoltIcon, ScaleIcon, RocketLaunchIcon, SunIcon, ClockIcon } from 'react-native-heroicons/solid';
+import IonIcons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const Converter = ({ navigation }) => {
   const [input, setInput] = useState('');
@@ -12,9 +14,9 @@ const Converter = ({ navigation }) => {
     { name: 'Area', icon: <ViewColumnsIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo:'Area' },
     { name: 'Volume', icon: <CubeIcon color="#FE7A36" size={buttonSize / 2} />,   navigateTo:'Volume'},
     { name: 'Pressure', icon: <MinusCircleIcon color="#FE7A36" size={buttonSize / 2} />,  navigateTo:'Pressure'},
-    { name: 'Power', icon: <BoltIcon color="#FE7A36" size={buttonSize / 2} />,  navigateTo:'Power'},
+    { name: 'Power', icon: <MaterialCommunityIcons name='power-plug' color="#FE7A36" size={buttonSize / 2} />,  navigateTo:'Power'},
     { name: 'Weight', icon: <ScaleIcon color="#FE7A36" size={buttonSize / 2} />,  navigateTo: 'Weight' },
-    { name: 'Speed', icon: <RocketLaunchIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'Speed' },
+    { name: 'Speed', icon: <IonIcons name='speedometer' color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'Speed' },
     { name: 'Temperature', icon: <SunIcon color="#FE7A36" size={buttonSize / 2} />,  navigateTo: 'Temperature'},
     { name: 'Time', icon: <ClockIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo:'Time' },
   ];

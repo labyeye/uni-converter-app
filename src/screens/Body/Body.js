@@ -16,7 +16,6 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
-
 const BodyMassIndex = () => {
   const [weightInput, setWeightInput] = useState('');
   const [heightInput, setHeightInput] = useState('');
@@ -57,20 +56,33 @@ const BodyMassIndex = () => {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <View style={styles.inputRow}>
-          <FontAwesome5 name='weight' size={24} color="#FE7A36" style={styles.icon} />
-          <Text style={styles.unitName}>Weight (kg)</Text>
-          <TextInput
-            style={[styles.inputField, styles.neumorphTextInput]}
-            value={weightInput}
-            onChangeText={text => setWeightInput(text)}
-            keyboardType="numeric"
-            placeholder="0"
-            placeholderTextColor="#747474"
-          />
+        <View style={styles.out}>
+          <View style={styles.inputRow}>
+            <FontAwesome5
+              name="weight"
+              size={24}
+              color="#FE7A36"
+              style={styles.icon}
+            />
+            <Text style={styles.unitName}>Weight (kg)</Text>
+            <TextInput
+              style={[styles.inputField, styles.neumorphTextInput]}
+              value={weightInput}
+              onChangeText={text => setWeightInput(text)}
+              keyboardType="numeric"
+              placeholder="0"
+              placeholderTextColor="#747474"
+            />
+          </View>
         </View>
+        <View style={styles.out}>
         <View style={styles.inputRow}>
-        <MaterialCommunityIcons name='human-male-height' size={24} color='#FE7A36' style={styles.icon}/>
+          <MaterialCommunityIcons
+            name="human-male-height"
+            size={24}
+            color="#FE7A36"
+            style={styles.icon}
+          />
 
           <Text style={styles.unitName}>Height (cm)</Text>
           <TextInput
@@ -82,8 +94,10 @@ const BodyMassIndex = () => {
             placeholderTextColor="#747474"
           />
         </View>
-        <View style={styles.inputRow}>
-          <IonIcons name='body'color="#FE7A36" size={24}style={styles.icon} />
+        </View>
+       <View style={styles.out}>
+       <View style={styles.inputRow}>
+          <IonIcons name="body" color="#FE7A36" size={24} style={styles.icon} />
           <Text style={styles.unitName}>BMI</Text>
           <TextInput
             style={[
@@ -95,6 +109,7 @@ const BodyMassIndex = () => {
             editable={false}
           />
         </View>
+       </View>
         {bmiMessage ? (
           <Text
             style={
@@ -127,6 +142,16 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingTop: 70,
   },
+  out: {
+    shadowColor: '#000000',
+    shadowOffset: {width: -5, height: -4},
+    shadowOpacity: 1,
+    shadowRadius: 5,
+    elevation: 4,
+    borderRadius: 40,
+    height: 75,
+    marginVertical: 10,
+  },
   inputContainer: {
     width: '90%',
     marginBottom: 10,
@@ -142,8 +167,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A1A1A',
     borderRadius: 40,
     padding: 10,
-    shadowColor: '#000',
-    shadowOffset: {width: 6, height: 6},
+    shadowColor: '#303030',
+    shadowOffset: {width: 2, height: 4},
     shadowOpacity: 1,
     shadowRadius: 6,
   },
@@ -161,7 +186,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   neumorphTextInput: {
-    shadowColor: '#000',
+    shadowColor: '#1A1A1A',
     shadowOffset: {width: -2, height: -2},
     shadowOpacity: 0.7,
     shadowRadius: 3,

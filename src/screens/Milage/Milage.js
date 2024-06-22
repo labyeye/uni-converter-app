@@ -1,7 +1,19 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
-import { MapPinIcon, CurrencyDollarIcon, ChartBarIcon } from 'react-native-heroicons/outline';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+import {
+  MapPinIcon,
+  CurrencyDollarIcon,
+  ChartBarIcon,
+} from 'react-native-heroicons/outline';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 const Milage = () => {
   const [distance, setDistance] = useState('');
   const [fuel, setFuel] = useState('');
@@ -23,54 +35,83 @@ const Milage = () => {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <View style={styles.inputRow}>
-          <MapPinIcon size={24} color="#FE7A36" style={styles.icon} />
-          <Text style={styles.unitName}>Distance in (km)</Text>
-          <TextInput
-            style={[styles.inputField, styles.neumorphTextInput]}
-            value={distance}
-            onChangeText={text => setDistance(text)}
-            keyboardType="numeric"
-            placeholder="0"
-            placeholderTextColor="#747474"
-          />
+        <View style={styles.out}>
+          <View style={styles.inputRow}>
+            <MapPinIcon size={24} color="#FE7A36" style={styles.icon} />
+            <Text style={styles.unitName}>Distance in (km)</Text>
+            <TextInput
+              style={[styles.inputField, styles.neumorphTextInput]}
+              value={distance}
+              onChangeText={text => setDistance(text)}
+              keyboardType="numeric"
+              placeholder="0"
+              placeholderTextColor="#747474"
+            />
+          </View>
         </View>
-        <View style={styles.inputRow}>
-          <MaterialCommunityIcons name='fuel' size={24} color='#FE7A36' style={styles.icon}/>
-          <Text style={styles.unitName}>Fuel in (litre)</Text>
-          <TextInput
-            style={[styles.inputField, styles.neumorphTextInput]}
-            value={fuel}
-            onChangeText={text => setFuel(text)}
-            keyboardType="numeric"
-            placeholder="0"
-            placeholderTextColor="#747474"
-          />
+        <View style={styles.out}>
+          <View style={styles.inputRow}>
+            <MaterialCommunityIcons
+              name="fuel"
+              size={24}
+              color="#FE7A36"
+              style={styles.icon}
+            />
+            <Text style={styles.unitName}>Fuel in (litre)</Text>
+            <TextInput
+              style={[styles.inputField, styles.neumorphTextInput]}
+              value={fuel}
+              onChangeText={text => setFuel(text)}
+              keyboardType="numeric"
+              placeholder="0"
+              placeholderTextColor="#747474"
+            />
+          </View>
         </View>
-        <View style={styles.inputRow}>
-          <CurrencyDollarIcon size={24} color="#FE7A36" style={styles.icon} />
-          <Text style={styles.unitName}>Price in (INR)</Text>
-          <TextInput
-            style={[styles.inputField, styles.neumorphTextInput]}
-            value={price}
-            onChangeText={text => setPrice(text)}
-            keyboardType="numeric"
-            placeholder="0"
-            placeholderTextColor="#747474"
-          />
+        <View style={styles.out}>
+          <View style={styles.inputRow}>
+            <FontAwesome
+              name="rupee"
+              size={24}
+              color="#FE7A36"
+              style={{marginLeft: 10, marginRight: 17}}
+            />
+            <Text style={styles.unitName}>Price in (INR)</Text>
+            <TextInput
+              style={[styles.inputField, styles.neumorphTextInput]}
+              value={price}
+              onChangeText={text => setPrice(text)}
+              keyboardType="numeric"
+              placeholder="0"
+              placeholderTextColor="#747474"
+            />
+          </View>
         </View>
-        <View style={styles.inputRow}>
-          <ChartBarIcon size={24} color="#FE7A36" style={styles.icon} />
-          <Text style={styles.unitName}>Mileage (km/l)</Text>
-          <TextInput
-            style={[styles.inputField, styles.neumorphTextInput, styles.mileageResultInput]}
-            value={mileageResult}
-            editable={false}
-          />
+        <View style={styles.out}>
+          <View style={styles.inputRow}>
+            <FontAwesome
+              name="road"
+              size={24}
+              color="#FE7A36"
+              style={styles.icon}
+            />
+            <Text style={styles.unitName}>Mileage (km/l)</Text>
+            <TextInput
+              style={[
+                styles.inputField,
+                styles.neumorphTextInput,
+                styles.mileageResultInput,
+              ]}
+              value={mileageResult}
+              editable={false}
+            />
+          </View>
         </View>
       </View>
 
-      <TouchableOpacity style={styles.calculateButton} onPress={calculateMileage}>
+      <TouchableOpacity
+        style={styles.calculateButton}
+        onPress={calculateMileage}>
         <Text style={styles.calculateButtonText}>Calculate Mileage</Text>
       </TouchableOpacity>
     </View>
@@ -96,8 +137,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A1A1A',
     borderRadius: 40,
     padding: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
+    shadowColor: '#303030',
+    shadowOffset: {width: 3, height: 4},
     shadowOpacity: 1,
     shadowRadius: 6,
   },
@@ -120,8 +161,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   neumorphTextInput: {
-    shadowColor: '#000',
-    shadowOffset: { width: -2, height: -2 },
+    shadowColor: '#1A1A1A',
+    shadowOffset: {width: -2, height: -2},
     shadowOpacity: 0.7,
     shadowRadius: 3,
     elevation: 3,
@@ -138,7 +179,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginTop: 20,
     shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
+    shadowOffset: {width: 6, height: 6},
     shadowOpacity: 0.7,
     shadowRadius: 6,
   },
@@ -146,6 +187,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#FFF',
     fontWeight: 'bold',
+  },
+  out: {
+    shadowColor: '#000000',
+    shadowOffset: {width: -5, height: -4},
+    shadowOpacity: 1,
+    shadowRadius: 5,
+    elevation: 4,
+    borderRadius: 40,
+    height: 75,
+    marginVertical: 10,
   },
 });
 

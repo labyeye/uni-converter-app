@@ -21,6 +21,8 @@ import BodyMassIndex from './src/screens/Body/Body';
 import Milage from './src/screens/Milage/Milage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import Discount from './src/screens/Discount/Discount';
+import SimpleInterest from './src/screens/SimpleIntrest/Simple';
 
 
 const Drawer = createDrawerNavigator();
@@ -42,6 +44,8 @@ const ConverterStack = () => (
     <Stack.Screen name="Pressure" component={Pressure} options={{ title: 'Pressure' }} />
     <Stack.Screen name="Volume" component={Volume} options={{ title: 'Volume' }} />
     <Stack.Screen name="Area" component={Area} options={{ title: 'Area' }} />
+    <Stack.Screen name="Discount" component={Discount} options={{ title: 'Discount' }} />
+
   </Stack.Navigator>
 );
 
@@ -143,6 +147,38 @@ const App = () => {
               <MaterialCommunityIcons name='fuel' size={size} color={color}/>
             ),
             title: 'Milage',
+            headerTitleAlign:'left',
+            headerStyle:{
+              backgroundColor:'#1A1A1A'
+            },
+            headerTintColor:'white'
+
+          }}
+        />
+        <Drawer.Screen
+          name="Discount"
+          component={Discount}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name='brightness-percent' size={size} color={color}/>
+            ),
+            title: 'Discount',
+            headerTitleAlign:'left',
+            headerStyle:{
+              backgroundColor:'#1A1A1A'
+            },
+            headerTintColor:'white'
+
+          }}
+        />
+        <Drawer.Screen
+          name="Simple"
+          component={SimpleInterest}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name='label-percent' size={size} color={color}/>
+            ),
+            title: 'Simple Interest',
             headerTitleAlign:'left',
             headerStyle:{
               backgroundColor:'#1A1A1A'

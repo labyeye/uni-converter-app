@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { UserIcon, CalculatorIcon, ArrowPathIcon, FunnelIcon } from 'react-native-heroicons/solid';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import IonIcons from 'react-native-vector-icons/Ionicons';
@@ -8,13 +8,15 @@ const Dashboard = ({ navigation }) => {
   
   const [input, setInput] = useState('');
   const screenWidth = Dimensions.get('window').width;
-  let buttonSize = (screenWidth <= 375) ? (screenWidth - 90) / 3 : (screenWidth - 60) / 3;
+  let buttonSize = (screenWidth <= 375) ? (screenWidth - 90) / 4 : (screenWidth - 70) / 3;
 
   const items = [
     { name: 'Unit Converter', icon: <ArrowPathIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'ConverterStack' },
-    { name: 'BMI', icon: <IonIcons name='body'color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'BodyMassIndex' },
+    { name: 'BMI', icon: <IonIcons name='body' color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'BodyMassIndex' },
+    { name: 'Simple Interest', icon: <MaterialCommunityIcons name='label-percent' size={buttonSize / 2} color='#FE7A36' />, navigateTo: 'Simple' },
     { name: 'Calculator', icon: <CalculatorIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'Calculator' },
-    { name: 'Milage', icon: <MaterialCommunityIcons name='fuel' size={buttonSize / 2} color='#FE7A36'/>, navigateTo: 'Milage' },
+    { name: 'Discount', icon: <MaterialCommunityIcons name='brightness-percent' size={buttonSize / 2} color='#FE7A36' />, navigateTo: 'Discount' },
+    { name: 'Milage', icon: <MaterialCommunityIcons name='fuel' size={buttonSize / 2} color='#FE7A36' />, navigateTo: 'Milage' },
   ];
 
   return (
@@ -22,22 +24,22 @@ const Dashboard = ({ navigation }) => {
       <Text style={styles.welcomeText}>Welcome</Text>
       <View style={styles.buttonsContainer}>
         {items.map((item, index) => (
-          <View key={index} style={styles.itemContainer}>
-            <TouchableOpacity
-              style={styles.buttonOuterShadow}
-              onPress={() => navigation.navigate(item.navigateTo)}
-            >
+          <TouchableOpacity
+            key={index}
+            style={styles.itemContainer}
+            onPress={() => navigation.navigate(item.navigateTo)}
+          >
+            <View style={styles.buttonOuterShadow}>
               <View style={styles.buttonInnerShadow}>
                 <View style={[styles.neumorphButton, { width: buttonSize, height: buttonSize }]}>
                   {item.icon}
                 </View>
               </View>
-            </TouchableOpacity>
+            </View>
             <Text style={styles.itemText}>{item.name}</Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
-      
     </View>
   );
 };
@@ -55,18 +57,18 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     width: '100%',
-    flex: 1,
-    justifyContent: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginTop: 50,
     paddingHorizontal: 20,
-    alignItems: 'center',
-    marginTop: 70,
-    gap: 30,
+    gap: 30, // This is for spacing between items, you may need to adjust it based on your design
   },
   itemContainer: {
     alignItems: 'center',
-    margin: 10,
+    marginHorizontal: 10,
+    marginBottom: 20,
+    width: '20%', // Adjust the width to fit three buttons in one row
   },
   buttonOuterShadow: {
     shadowColor: '#000',
@@ -91,6 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#747474',
     marginTop: 10,
+    textAlign: 'center',
   },
 });
 
