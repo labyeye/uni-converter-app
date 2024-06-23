@@ -15,6 +15,7 @@ import {
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
 
 const BodyMassIndex = () => {
   const [weightInput, setWeightInput] = useState('');
@@ -130,6 +131,15 @@ const BodyMassIndex = () => {
         }>
         <Text style={{color: 'white'}}>See Chart for More Details</Text>
       </TouchableOpacity>
+      <View style={styles.adContainer}>
+        <BannerAd
+          unitId="ca-app-pub-6119758783032593/4123323972" // Replace with your actual Ad Unit ID
+          size={BannerAdSize.FULL_BANNER}
+          requestOptions={{
+            requestNonPersonalizedAdsOnly: true,
+          }}
+        />
+      </View>
     </View>
   );
 };
@@ -214,6 +224,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#FFF',
     textAlign: 'center',
+  },
+  adContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    alignItems: 'center',
   },
 });
 

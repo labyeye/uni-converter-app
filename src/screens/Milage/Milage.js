@@ -13,6 +13,7 @@ import {
 } from 'react-native-heroicons/outline';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
 
 const Milage = () => {
   const [distance, setDistance] = useState('');
@@ -114,6 +115,15 @@ const Milage = () => {
         onPress={calculateMileage}>
         <Text style={styles.calculateButtonText}>Calculate Mileage</Text>
       </TouchableOpacity>
+      <View style={styles.adContainer}>
+        <BannerAd
+          unitId="ca-app-pub-6119758783032593/4123323972" // Replace with your actual Ad Unit ID
+          size={BannerAdSize.FULL_BANNER}
+          requestOptions={{
+            requestNonPersonalizedAdsOnly: true,
+          }}
+        />
+      </View>
     </View>
   );
 };
@@ -129,6 +139,12 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: '90%',
     marginBottom: 10,
+  },
+  adContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    alignItems: 'center',
   },
   inputRow: {
     flexDirection: 'row',

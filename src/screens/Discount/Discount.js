@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
 
 const Discount = () => {
   const [originalPrice, setOriginalPrice] = useState('');
@@ -79,15 +80,24 @@ const Discount = () => {
       <View style={styles.outneomorph}>
         <View style={[styles.resultContainer, styles.neumorphResult]}>
           <Text style={styles.resultText}>
-            Before Discount: {originalPrice || '--'}
+            Before Discount: {originalPrice || '      --'}
           </Text>
           <Text style={styles.resultText}>
-            Discount Percent: {discountPercent || '--'}%
+            Discount Percent: {discountPercent || '    --'}%
           </Text>
           <Text style={styles.resultText}>
-            After Discount: {discountedPrice || '--'}
+            After Discount: {discountedPrice || '         --'}
           </Text>
         </View>
+      </View>
+      <View style={styles.adContainer}>
+        <BannerAd
+          unitId="ca-app-pub-6119758783032593/4123323972" // Replace with your actual Ad Unit ID
+          size={BannerAdSize.FULL_BANNER}
+          requestOptions={{
+            requestNonPersonalizedAdsOnly: true,
+          }}
+        />
       </View>
     </View>
   );
@@ -100,7 +110,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 20,
     paddingTop: 20,
-    
+  },
+  adContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    alignItems: 'center',
   },
   out:{
     shadowColor: '#000000',

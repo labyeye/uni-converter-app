@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-nati
 import { ChartBarIcon, ViewColumnsIcon, CubeIcon, MinusCircleIcon, BoltIcon, ScaleIcon, RocketLaunchIcon, SunIcon, ClockIcon } from 'react-native-heroicons/solid';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
 
 const Converter = ({ navigation }) => {
   const [input, setInput] = useState('');
@@ -39,6 +40,15 @@ const Converter = ({ navigation }) => {
             <Text style={styles.itemText}>{item.name}</Text>
           </View>
         ))}
+      </View>
+      <View style={styles.adContainer}>
+        <BannerAd
+          unitId="ca-app-pub-6119758783032593/4123323972" // Replace with your actual Ad Unit ID
+          size={BannerAdSize.FULL_BANNER}
+          requestOptions={{
+            requestNonPersonalizedAdsOnly: true,
+          }}
+        />
       </View>
     </View>
   );
@@ -88,6 +98,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#747474',
     marginTop: 10,
+  },
+  adContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    alignItems: 'center',
   },
 });
 

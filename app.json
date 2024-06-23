@@ -1,4 +1,9 @@
 {
   "name": "unitconverterapp",
-  "displayName": "unitconverterapp"
+  "displayName": "unitconverterapp",
+  "react-native-google-mobile-ads": {
+    "ios_app_id": "ca-app-pub-6119758783032593~4297200909"
+  }
+
+
 }

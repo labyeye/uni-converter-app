@@ -3,9 +3,10 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-nati
 import { UserIcon, CalculatorIcon, ArrowPathIcon, FunnelIcon } from 'react-native-heroicons/solid';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
 
 const Dashboard = ({ navigation }) => {
-  
+
   const [input, setInput] = useState('');
   const screenWidth = Dimensions.get('window').width;
   let buttonSize = (screenWidth <= 375) ? (screenWidth - 90) / 4 : (screenWidth - 70) / 3;
@@ -39,6 +40,15 @@ const Dashboard = ({ navigation }) => {
             <Text style={styles.itemText}>{item.name}</Text>
           </TouchableOpacity>
         ))}
+      </View>
+      <View style={styles.adContainer}>
+        <BannerAd
+          unitId="ca-app-pub-6119758783032593/4123323972" // Replace with your actual Ad Unit ID
+          size={BannerAdSize.FULL_BANNER}
+          requestOptions={{
+            requestNonPersonalizedAdsOnly: true,
+          }}
+        />
       </View>
     </View>
   );
@@ -94,6 +104,12 @@ const styles = StyleSheet.create({
     color: '#747474',
     marginTop: 10,
     textAlign: 'center',
+  },
+  adContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    alignItems: 'center',
   },
 });
 
