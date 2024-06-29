@@ -4,12 +4,13 @@ import { UserIcon, CalculatorIcon, ArrowPathIcon, FunnelIcon } from 'react-nativ
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Dashboard = ({ navigation }) => {
 
   const [input, setInput] = useState('');
   const screenWidth = Dimensions.get('window').width;
-  let buttonSize = (screenWidth <= 375) ? (screenWidth - 90) / 4 : (screenWidth - 70) / 3;
+  let buttonSize = (screenWidth <= 375) ? (screenWidth - 130) / 4 : (screenWidth - 70) / 3;
 
   const items = [
     { name: 'Unit Converter', icon: <ArrowPathIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'ConverterStack' },
@@ -18,10 +19,11 @@ const Dashboard = ({ navigation }) => {
     { name: 'Calculator', icon: <CalculatorIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'Calculator' },
     { name: 'Discount', icon: <MaterialCommunityIcons name='brightness-percent' size={buttonSize / 2} color='#FE7A36' />, navigateTo: 'Discount' },
     { name: 'Milage', icon: <MaterialCommunityIcons name='fuel' size={buttonSize / 2} color='#FE7A36' />, navigateTo: 'Milage' },
+    { name: 'Matrix Multiply', icon: <MaterialCommunityIcons name='matrix' size={buttonSize / 2} color='#FE7A36' />, navigateTo: 'MatrixMultiplication' },
   ];
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.welcomeText}>Welcome</Text>
       <View style={styles.buttonsContainer}>
         {items.map((item, index) => (
@@ -50,7 +52,7 @@ const Dashboard = ({ navigation }) => {
           }}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -63,14 +65,14 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: 40,
     color: "#FE7A36",
-    paddingTop: 40,
+    paddingTop: 20,
   },
   buttonsContainer: {
     width: '100%',
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginTop: 50,
+    marginTop: 40,
     paddingHorizontal: 20,
     gap: 30, // This is for spacing between items, you may need to adjust it based on your design
   },
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   itemText: {
-    fontSize: 12,
+    fontSize: 13,
     color: '#747474',
     marginTop: 10,
     textAlign: 'center',

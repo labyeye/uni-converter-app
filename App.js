@@ -23,6 +23,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import Discount from './src/screens/Discount/Discount';
 import SimpleInterest from './src/screens/SimpleIntrest/Simple';
+import MatrixMultiplication from './src/screens/MatrixMultiplication/Matrix';
 
 
 const Drawer = createDrawerNavigator();
@@ -179,6 +180,22 @@ const App = () => {
               <MaterialCommunityIcons name='label-percent' size={size} color={color}/>
             ),
             title: 'Simple Interest',
+            headerTitleAlign:'left',
+            headerStyle:{
+              backgroundColor:'#1A1A1A'
+            },
+            headerTintColor:'white'
+
+          }}
+        />
+        <Drawer.Screen
+          name="MatrixMultiplication"
+          component={MatrixMultiplication}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name='matrix' size={size} color={color}/>
+            ),
+            title: 'MatrixMultiplication',
             headerTitleAlign:'left',
             headerStyle:{
               backgroundColor:'#1A1A1A'
