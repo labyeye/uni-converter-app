@@ -20,6 +20,8 @@ const Dashboard = ({ navigation }) => {
     { name: 'Discount', icon: <MaterialCommunityIcons name='brightness-percent' size={buttonSize / 2} color='#FE7A36' />, navigateTo: 'Discount' },
     { name: 'Milage', icon: <MaterialCommunityIcons name='fuel' size={buttonSize / 2} color='#FE7A36' />, navigateTo: 'Milage' },
     { name: 'Matrix Multiply', icon: <MaterialCommunityIcons name='matrix' size={buttonSize / 2} color='#FE7A36' />, navigateTo: 'MatrixMultiplication' },
+    { name: 'Multiply Inverse', icon: <MaterialCommunityIcons name='multiplication-box' size={buttonSize / 2} color='#FE7A36' />, navigateTo: 'MultiplicativeInverse' },
+    { name: 'Gcd & Lcm', icon: <MaterialCommunityIcons name='math-norm-box' size={buttonSize / 2} color='#FE7A36' />, navigateTo: 'GcdLcm' },
   ];
 
   return (

@@ -24,6 +24,8 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 import Discount from './src/screens/Discount/Discount';
 import SimpleInterest from './src/screens/SimpleIntrest/Simple';
 import MatrixMultiplication from './src/screens/MatrixMultiplication/Matrix';
+import GcdLcm from './src/screens/GcdLcm/GcdLcm';
+import MultiplicativeInverse from './src/screens/MultiInverse/MulInv';
 
 
 const Drawer = createDrawerNavigator();
@@ -195,7 +197,39 @@ const App = () => {
             drawerIcon: ({ color, size }) => (
               <MaterialCommunityIcons name='matrix' size={size} color={color}/>
             ),
-            title: 'MatrixMultiplication',
+            title: 'Matrix Multiply',
+            headerTitleAlign:'left',
+            headerStyle:{
+              backgroundColor:'#1A1A1A'
+            },
+            headerTintColor:'white'
+
+          }}
+        />
+        <Drawer.Screen
+          name="GcdLcm"
+          component={GcdLcm}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name='math-norm-box' size={size} color={color}/>
+            ),
+            title: 'Gcd & Lcm',
+            headerTitleAlign:'left',
+            headerStyle:{
+              backgroundColor:'#1A1A1A'
+            },
+            headerTintColor:'white'
+
+          }}
+        />
+        <Drawer.Screen
+          name="MultiplicativeInverse"
+          component={MultiplicativeInverse}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name='multiplication-box' size={size} color={color}/>
+            ),
+            title: 'Multiply Inverse',
             headerTitleAlign:'left',
             headerStyle:{
               backgroundColor:'#1A1A1A'
