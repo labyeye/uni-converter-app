@@ -70,9 +70,9 @@ const App = () => {
         drawerContent={(props) => <CustomDrawerContent {...props} />}
         screenOptions={{
           drawerStyle: {
-            backgroundColor: '#1A1A1A', // Change drawer background color
+            backgroundColor: '#CDF5FD', // Change drawer background color
           },
-          drawerActiveTintColor: '#FE7A36', // Active item label color
+          drawerActiveTintColor: '#00A9FF', // Active item label color
           drawerInactiveTintColor: '#747474', // Inactive item label color
           drawerLabelStyle: {
             fontSize: 18,
@@ -88,9 +88,9 @@ const App = () => {
             ),
             headerTitleAlign:'left',
             headerStyle:{
-              backgroundColor:'#1A1A1A'
+              backgroundColor:'#CDF5FD'
             },
-            headerTintColor:'white'
+            headerTintColor:'black'
 
           }}
         />
@@ -104,9 +104,9 @@ const App = () => {
             title: 'Calculator',
             headerTitleAlign:'left',
             headerStyle:{
-              backgroundColor:'#1A1A1A'
+              backgroundColor:'#CDF5FD'
             },
-            headerTintColor:'white'
+            headerTintColor:'black'
             
 
           }}
@@ -121,9 +121,9 @@ const App = () => {
             title: 'Converter',
             headerTitleAlign:'left',
             headerStyle:{
-              backgroundColor:'#1A1A1A'
+              backgroundColor:'#CDF5FD'
             },
-            headerTintColor:'white'
+            headerTintColor:'black'
           }}
         />
         <Drawer.Screen
@@ -136,9 +136,9 @@ const App = () => {
             title: 'BMI',
             headerTitleAlign:'left',
             headerStyle:{
-              backgroundColor:'#1A1A1A'
+              backgroundColor:'#CDF5FD'
             },
-            headerTintColor:'white'
+            headerTintColor:'black'
 
           }}
         />
@@ -152,9 +152,9 @@ const App = () => {
             title: 'Milage',
             headerTitleAlign:'left',
             headerStyle:{
-              backgroundColor:'#1A1A1A'
+              backgroundColor:'#CDF5FD'
             },
-            headerTintColor:'white'
+            headerTintColor:'black'
 
           }}
         />
@@ -168,9 +168,9 @@ const App = () => {
             title: 'Discount',
             headerTitleAlign:'left',
             headerStyle:{
-              backgroundColor:'#1A1A1A'
+              backgroundColor:'#CDF5FD'
             },
-            headerTintColor:'white'
+            headerTintColor:'black'
 
           }}
         />
@@ -184,9 +184,9 @@ const App = () => {
             title: 'Simple Interest',
             headerTitleAlign:'left',
             headerStyle:{
-              backgroundColor:'#1A1A1A'
+              backgroundColor:'#CDF5FD'
             },
-            headerTintColor:'white'
+            headerTintColor:'black'
 
           }}
         />
@@ -200,9 +200,9 @@ const App = () => {
             title: 'Matrix Multiply',
             headerTitleAlign:'left',
             headerStyle:{
-              backgroundColor:'#1A1A1A'
+              backgroundColor:'#CDF5FD'
             },
-            headerTintColor:'white'
+            headerTintColor:'black'
 
           }}
         />
@@ -216,9 +216,9 @@ const App = () => {
             title: 'Gcd & Lcm',
             headerTitleAlign:'left',
             headerStyle:{
-              backgroundColor:'#1A1A1A'
+              backgroundColor:'#CDF5FD'
             },
-            headerTintColor:'white'
+            headerTintColor:'black'
 
           }}
         />
@@ -232,9 +232,9 @@ const App = () => {
             title: 'Multiply Inverse',
             headerTitleAlign:'left',
             headerStyle:{
-              backgroundColor:'#1A1A1A'
+              backgroundColor:'#CDF5FD'
             },
-            headerTintColor:'white'
+            headerTintColor:'black'
 
           }}
         />

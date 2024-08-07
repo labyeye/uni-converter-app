@@ -4,6 +4,7 @@ import { ChartBarIcon, ViewColumnsIcon, CubeIcon, MinusCircleIcon, BoltIcon, Sca
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Converter = ({ navigation }) => {
   const [input, setInput] = useState('');
@@ -11,19 +12,23 @@ const Converter = ({ navigation }) => {
   let buttonSize = (screenWidth <= 375) ? (screenWidth - 110) / 4 : (screenWidth - 100) / 4;
 
   const items = [
-    { name: 'Length', icon: <ChartBarIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'Length' },
-    { name: 'Area', icon: <ViewColumnsIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo:'Area' },
-    { name: 'Volume', icon: <CubeIcon color="#FE7A36" size={buttonSize / 2} />,   navigateTo:'Volume'},
-    { name: 'Pressure', icon: <MinusCircleIcon color="#FE7A36" size={buttonSize / 2} />,  navigateTo:'Pressure'},
-    { name: 'Power', icon: <MaterialCommunityIcons name='power-plug' color="#FE7A36" size={buttonSize / 2} />,  navigateTo:'Power'},
-    { name: 'Weight', icon: <ScaleIcon color="#FE7A36" size={buttonSize / 2} />,  navigateTo: 'Weight' },
-    { name: 'Speed', icon: <IonIcons name='speedometer' color="#FE7A36" size={buttonSize / 2} />, navigateTo: 'Speed' },
-    { name: 'Temperature', icon: <SunIcon color="#FE7A36" size={buttonSize / 2} />,  navigateTo: 'Temperature'},
-    { name: 'Time', icon: <ClockIcon color="#FE7A36" size={buttonSize / 2} />, navigateTo:'Time' },
+    { name: 'Length', icon: <ChartBarIcon color="black" size={buttonSize / 2} />, navigateTo: 'Length' },
+    { name: 'Area', icon: <ViewColumnsIcon color="black" size={buttonSize / 2} />, navigateTo:'Area' },
+    { name: 'Volume', icon: <CubeIcon color="black" size={buttonSize / 2} />,   navigateTo:'Volume'},
+    { name: 'Pressure', icon: <MinusCircleIcon color="black" size={buttonSize / 2} />,  navigateTo:'Pressure'},
+    { name: 'Power', icon: <MaterialCommunityIcons name='power-plug' color="black" size={buttonSize / 2} />,  navigateTo:'Power'},
+    { name: 'Weight', icon: <ScaleIcon color="black" size={buttonSize / 2} />,  navigateTo: 'Weight' },
+    { name: 'Speed', icon: <IonIcons name='speedometer' color="black" size={buttonSize / 2} />, navigateTo: 'Speed' },
+    { name: 'Temperature', icon: <SunIcon color="black" size={buttonSize / 2} />,  navigateTo: 'Temperature'},
+    { name: 'Time', icon: <ClockIcon color="black" size={buttonSize / 2} />, navigateTo:'Time' },
   ];
 
   return (
-    <View style={styles.container}>
+    <LinearGradient 
+    colors={['#CDF5FD','#CDF5FD','white']}
+    style={styles.gradientContainer}
+    >
+      <View style={styles.container}>
       <View style={styles.buttonsContainer}>
         {items.map((item, index) => (
           <View key={index} style={styles.itemContainer}>
@@ -51,12 +56,17 @@ const Converter = ({ navigation }) => {
         />
       </View>
     </View>
+
+    </LinearGradient>
+    
   );
 };
 
 const styles = StyleSheet.create({
+  gradientContainer:{
+    flex:1
+  },
   container: {
-    backgroundColor: '#1A1A1A',
     flex: 1,
     alignItems: 'center',
   },
@@ -76,20 +86,20 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonOuterShadow: {
-    shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
+    shadowColor: '#00A9FF',
+    shadowOffset: { width: 5, height: 6 },
     shadowOpacity: 1,
-    shadowRadius: 6,
+    shadowRadius: 5,
   },
   buttonInnerShadow: {
-    shadowColor: '#333',
+    shadowColor: '#A0E9FF',
     shadowOffset: { width: -6, height: -6 },
     shadowOpacity: 0.7,
     shadowRadius: 6,
   },
   neumorphButton: {
     borderRadius: 50,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#89CFF3',
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 4,
@@ -98,6 +108,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#747474',
     marginTop: 10,
+    fontWeight:'bold'
   },
   adContainer: {
     position: 'absolute',
