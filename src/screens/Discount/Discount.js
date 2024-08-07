@@ -6,9 +6,10 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
+import {BannerAd, BannerAdSize} from 'react-native-google-mobile-ads';
 
 const Discount = () => {
   const [originalPrice, setOriginalPrice] = useState('');
@@ -29,83 +30,89 @@ const Discount = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <View style={styles.out}>
-        <View style={styles.inputRow}>
-          <IonIcons
-            name="pricetag"
-            color="#FE7A36"
-            size={24}
-            style={styles.icon}
-          />
-          <Text style={styles.unitName}>Original Price</Text>
-          <TextInput
-            style={[styles.inputField, styles.neumorphTextInput]}
-            value={originalPrice}
-            onChangeText={text => setOriginalPrice(text)}
-            keyboardType="numeric"
-            placeholder="0"
-            placeholderTextColor="#747474"
-          />
+    <LinearGradient
+      colors={['#CDF5FD', '#CDF5FD', 'white']}
+      style={styles.gradientContainer}>
+      <View style={styles.container}>
+        <View style={styles.inputContainer}>
+          <View style={styles.out}>
+            <View style={styles.inputRow}>
+              <IonIcons
+                name="pricetag"
+                color="black"
+                size={24}
+                style={styles.icon}
+              />
+              <Text style={styles.unitName}>Original Price</Text>
+              <TextInput
+                style={[styles.inputField, styles.neumorphTextInput]}
+                value={originalPrice}
+                onChangeText={text => setOriginalPrice(text)}
+                keyboardType="numeric"
+                placeholder="0"
+                placeholderTextColor="#747474"
+              />
+            </View>
+          </View>
+          <View style={styles.out}>
+            <View style={styles.inputRow}>
+              <MaterialCommunityIcons
+                name="brightness-percent"
+                color="black"
+                size={24}
+                style={styles.icon}
+              />
+              <Text style={styles.unitName}>Discount (%)</Text>
+              <TextInput
+                style={[styles.inputField, styles.neumorphTextInput]}
+                value={discountPercent}
+                onChangeText={text => setDiscountPercent(text)}
+                keyboardType="numeric"
+                placeholder="0"
+                placeholderTextColor="#747474"
+              />
+            </View>
+          </View>
         </View>
-        </View>
-        <View style={styles.out}>
-        <View style={styles.inputRow}>
-          <MaterialCommunityIcons
-            name="brightness-percent"
-            color="#FE7A36"
-            size={24}
-            style={styles.icon}
-          />
-          <Text style={styles.unitName}>Discount (%)</Text>
-          <TextInput
-            style={[styles.inputField, styles.neumorphTextInput]}
-            value={discountPercent}
-            onChangeText={text => setDiscountPercent(text)}
-            keyboardType="numeric"
-            placeholder="0"
-            placeholderTextColor="#747474"
-          />
-        </View>
-        </View>
-      </View>
 
-      <TouchableOpacity
-        style={styles.calculateButton}
-        onPress={calculateDiscount}>
-        <Text style={styles.calculateButtonText}>Calculate Discount</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.calculateButton}
+          onPress={calculateDiscount}>
+          <Text style={styles.calculateButtonText}>Calculate Discount</Text>
+        </TouchableOpacity>
 
-      <View style={styles.outneomorph}>
-        <View style={[styles.resultContainer, styles.neumorphResult]}>
-          <Text style={styles.resultText}>
-            Before Discount: {originalPrice || '      --'}
-          </Text>
-          <Text style={styles.resultText}>
-            Discount Percent: {discountPercent || '    --'}%
-          </Text>
-          <Text style={styles.resultText}>
-            After Discount: {discountedPrice || '         --'}
-          </Text>
+        <View style={styles.outneomorph}>
+          <View style={[styles.resultContainer, styles.neumorphResult]}>
+            <Text style={styles.resultText}>
+              Before Discount: {originalPrice || '      --'}
+            </Text>
+            <Text style={styles.resultText}>
+              Discount Percent: {discountPercent || '    --'}%
+            </Text>
+            <Text style={styles.resultText}>
+              After Discount: {discountedPrice || '         --'}
+            </Text>
+          </View>
+        </View>
+        <View style={styles.adContainer}>
+          <BannerAd
+            unitId="ca-app-pub-6119758783032593/4123323972" // Replace with your actual Ad Unit ID
+            size={BannerAdSize.FULL_BANNER}
+            requestOptions={{
+              requestNonPersonalizedAdsOnly: true,
+            }}
+          />
         </View>
       </View>
-      <View style={styles.adContainer}>
-        <BannerAd
-          unitId="ca-app-pub-6119758783032593/4123323972" // Replace with your actual Ad Unit ID
-          size={BannerAdSize.FULL_BANNER}
-          requestOptions={{
-            requestNonPersonalizedAdsOnly: true,
-          }}
-        />
-      </View>
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
+  gradientContainer: {
+    flex: 1,
+  },
   container: {
-    backgroundColor: '#1A1A1A',
     flex: 1,
     alignItems: 'center',
     paddingVertical: 20,
@@ -117,15 +124,15 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
   },
-  out:{
-    shadowColor: '#000000',
+  out: {
+    shadowColor: '#00A9FF',
     shadowOffset: {width: -5, height: -4},
     shadowOpacity: 1,
     shadowRadius: 5,
     elevation: 4,
-    borderRadius:40,
-    height:60,
-    marginVertical:14,
+    borderRadius: 40,
+    height: 60,
+    marginVertical: 14,
   },
   inputContainer: {
     width: '90%',
@@ -135,15 +142,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 10,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#89CFF3',
     borderRadius: 40,
     padding: 10,
-    shadowColor: '#303030',
+    shadowColor: '#A0E9FF',
     shadowOffset: {width: 3, height: 3},
     shadowOpacity: 1,
     shadowRadius: 6,
-    width:'100%',
-    height:'100%'
+    width: '100%',
+    height: '100%',
   },
   unitName: {
     color: '#747474',
@@ -152,7 +159,7 @@ const styles = StyleSheet.create({
     width: 120,
   },
   inputField: {
-    color: '#747474',
+    color: '#00A9FF',
     fontSize: 20,
     flex: 1,
     textAlign: 'right',
@@ -160,27 +167,27 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   neumorphTextInput: {
-    shadowColor: '#1A1A1A',
+    shadowColor: '#00A9FF',
     shadowOffset: {width: -2, height: -2},
     shadowOpacity: 0.7,
     shadowRadius: 3,
     elevation: 3,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#89CFF3',
   },
   calculateButton: {
-    backgroundColor: '#FE7A36',
+    backgroundColor: '#A0E9FF',
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 25,
     marginTop: 20,
-    shadowColor: '#000',
-    shadowOffset: {width: 6, height: 6},
+    shadowColor: '#00A9FF',
+    shadowOffset: {width: 4, height: 6},
     shadowOpacity: 0.7,
     shadowRadius: 6,
   },
   calculateButtonText: {
     fontSize: 18,
-    color: '#FFF',
+    color: 'black',
     fontWeight: 'bold',
   },
   resultContainer: {
@@ -189,41 +196,41 @@ const styles = StyleSheet.create({
     alignItems: 'left',
     padding: 20,
     borderRadius: 20,
-    shadowColor: '#000',
+    shadowColor: '#A0E9FF',
     shadowOffset: {width: 6, height: 6},
     shadowOpacity: 1,
     shadowRadius: 6,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#89CFF3',
   },
   resultText: {
     color: '#747474',
     fontSize: 18,
     marginVertical: 5,
-    textAlign:'left'
+    textAlign: 'left',
   },
   neumorphResult: {
-    shadowColor: '#000000',
+    shadowColor: '#A0E9FF',
     shadowOffset: {width: -6, height: -4},
     shadowOpacity: 1,
     shadowRadius: 5,
     elevation: 4,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#89CFF3',
   },
   icon: {
     marginRight: 10,
     marginLeft: 5,
   },
-  outneomorph:{
-    height:140,
-    shadowColor: '#303030',
+  outneomorph: {
+    height: 140,
+    shadowColor: '#00A9FF',
     shadowOffset: {width: 1, height: 28},
     shadowOpacity: 1,
     shadowRadius: 5,
     elevation: 4,
-    borderRadius:20,
-    marginTop:20,
-    backgroundColor: '#1A1A1A',
-  }
+    borderRadius: 20,
+    marginTop: 20,
+    backgroundColor: '#89CFF3',
+  },
 });
 
 export default Discount;

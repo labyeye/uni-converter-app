@@ -152,10 +152,10 @@ const styles = StyleSheet.create({
     borderRadius: 15, // Adjusted border radius for rounded rectangle
     backgroundColor: '#89CFF3',
     textAlign: 'right',
-    fontSize: 50,
+    fontSize: 30,
     color: '#747474',
     elevation: 4,
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
   },
   buttonsContainer: {
     width: '100%',
