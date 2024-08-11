@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import {
   MapPinIcon,
   CurrencyDollarIcon,
@@ -13,7 +14,7 @@ import {
 } from 'react-native-heroicons/outline';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
+import {BannerAd, BannerAdSize} from 'react-native-google-mobile-ads';
 
 const Milage = () => {
   const [distance, setDistance] = useState('');
@@ -34,107 +35,113 @@ const Milage = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <View style={styles.out}>
-          <View style={styles.inputRow}>
-            <MapPinIcon size={24} color="#FE7A36" style={styles.icon} />
-            <Text style={styles.unitName}>Distance in (km)</Text>
-            <TextInput
-              style={[styles.inputField, styles.neumorphTextInput]}
-              value={distance}
-              onChangeText={text => setDistance(text)}
-              keyboardType="numeric"
-              placeholder="0"
-              placeholderTextColor="#747474"
-            />
+    <LinearGradient
+      colors={['#CDF5FD', '#CDF5FD', 'white']}
+      style={styles.gradientContainer}>
+      <View style={styles.container}>
+        <View style={styles.inputContainer}>
+          <View style={styles.out}>
+            <View style={styles.inputRow}>
+              <MapPinIcon size={24} color="black" style={styles.icon} />
+              <Text style={styles.unitName}>Distance in (km)</Text>
+              <TextInput
+                style={[styles.inputField, styles.neumorphTextInput]}
+                value={distance}
+                onChangeText={text => setDistance(text)}
+                keyboardType="numeric"
+                placeholder="0"
+                placeholderTextColor="#747474"
+              />
+            </View>
+          </View>
+          <View style={styles.out}>
+            <View style={styles.inputRow}>
+              <MaterialCommunityIcons
+                name="fuel"
+                size={24}
+                color="black"
+                style={styles.icon}
+              />
+              <Text style={styles.unitName}>Fuel in (litre)</Text>
+              <TextInput
+                style={[styles.inputField, styles.neumorphTextInput]}
+                value={fuel}
+                onChangeText={text => setFuel(text)}
+                keyboardType="numeric"
+                placeholder="0"
+                placeholderTextColor="#747474"
+              />
+            </View>
+          </View>
+          <View style={styles.out}>
+            <View style={styles.inputRow}>
+              <FontAwesome
+                name="rupee"
+                size={24}
+                color="black"
+                style={{marginLeft: 10, marginRight: 17}}
+              />
+              <Text style={styles.unitName}>Price in (INR)</Text>
+              <TextInput
+                style={[styles.inputField, styles.neumorphTextInput]}
+                value={price}
+                onChangeText={text => setPrice(text)}
+                keyboardType="numeric"
+                placeholder="0"
+                placeholderTextColor="#747474"
+              />
+            </View>
+          </View>
+          <View style={styles.out}>
+            <View style={styles.inputRow}>
+              <FontAwesome
+                name="road"
+                size={24}
+                color="black"
+                style={styles.icon}
+              />
+              <Text style={styles.unitName}>Mileage (km/l)</Text>
+              <TextInput
+                style={[
+                  styles.inputField,
+                  styles.neumorphTextInput,
+                  styles.mileageResultInput,
+                ]}
+                value={mileageResult}
+                editable={false}
+              />
+            </View>
           </View>
         </View>
-        <View style={styles.out}>
-          <View style={styles.inputRow}>
-            <MaterialCommunityIcons
-              name="fuel"
-              size={24}
-              color="#FE7A36"
-              style={styles.icon}
-            />
-            <Text style={styles.unitName}>Fuel in (litre)</Text>
-            <TextInput
-              style={[styles.inputField, styles.neumorphTextInput]}
-              value={fuel}
-              onChangeText={text => setFuel(text)}
-              keyboardType="numeric"
-              placeholder="0"
-              placeholderTextColor="#747474"
-            />
-          </View>
-        </View>
-        <View style={styles.out}>
-          <View style={styles.inputRow}>
-            <FontAwesome
-              name="rupee"
-              size={24}
-              color="#FE7A36"
-              style={{marginLeft: 10, marginRight: 17}}
-            />
-            <Text style={styles.unitName}>Price in (INR)</Text>
-            <TextInput
-              style={[styles.inputField, styles.neumorphTextInput]}
-              value={price}
-              onChangeText={text => setPrice(text)}
-              keyboardType="numeric"
-              placeholder="0"
-              placeholderTextColor="#747474"
-            />
-          </View>
-        </View>
-        <View style={styles.out}>
-          <View style={styles.inputRow}>
-            <FontAwesome
-              name="road"
-              size={24}
-              color="#FE7A36"
-              style={styles.icon}
-            />
-            <Text style={styles.unitName}>Mileage (km/l)</Text>
-            <TextInput
-              style={[
-                styles.inputField,
-                styles.neumorphTextInput,
-                styles.mileageResultInput,
-              ]}
-              value={mileageResult}
-              editable={false}
-            />
-          </View>
-        </View>
-      </View>
 
-      <TouchableOpacity
-        style={styles.calculateButton}
-        onPress={calculateMileage}>
-        <Text style={styles.calculateButtonText}>Calculate Mileage</Text>
-      </TouchableOpacity>
-      <View style={styles.adContainer}>
-        <BannerAd
-          unitId="ca-app-pub-6119758783032593/4123323972" // Replace with your actual Ad Unit ID
-          size={BannerAdSize.FULL_BANNER}
-          requestOptions={{
-            requestNonPersonalizedAdsOnly: true,
-          }}
-        />
+        <TouchableOpacity
+          style={styles.calculateButton}
+          onPress={calculateMileage}>
+          <Text style={styles.calculateButtonText}>Calculate Mileage</Text>
+        </TouchableOpacity>
+        <View style={styles.adContainer}>
+          <BannerAd
+            unitId="ca-app-pub-6119758783032593/4123323972" // Replace with your actual Ad Unit ID
+            size={BannerAdSize.FULL_BANNER}
+            requestOptions={{
+              requestNonPersonalizedAdsOnly: true,
+            }}
+          />
+        </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#1A1A1A',
     flex: 1,
     alignItems: 'center',
     paddingVertical: 20,
     paddingTop: 20,
+  },
+  gradientContainer:{
+    flex:1
   },
   inputContainer: {
     width: '90%',
@@ -150,10 +157,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 10,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#89CFF3',
     borderRadius: 40,
     padding: 10,
-    shadowColor: '#303030',
+    shadowColor: '#A0E9FF',
     shadowOffset: {width: 3, height: 4},
     shadowOpacity: 1,
     shadowRadius: 6,
@@ -177,35 +184,35 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   neumorphTextInput: {
-    shadowColor: '#1A1A1A',
+    shadowColor: '#00A9FF',
     shadowOffset: {width: -2, height: -2},
     shadowOpacity: 0.7,
     shadowRadius: 3,
     elevation: 3,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#89CFF3',
   },
   mileageResultInput: {
     backgroundColor: 'transparent',
     fontSize: 24,
   },
   calculateButton: {
-    backgroundColor: '#FE7A36',
+    backgroundColor: '#89CFF3',
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 25,
-    marginTop: 20,
-    shadowColor: '#000',
-    shadowOffset: {width: 6, height: 6},
+    marginTop: 25,
+    shadowColor: '#00A9FF',
+    shadowOffset: {width: 4, height: 6},
     shadowOpacity: 0.7,
     shadowRadius: 6,
   },
   calculateButtonText: {
     fontSize: 18,
-    color: '#FFF',
+    color: 'black',
     fontWeight: 'bold',
   },
   out: {
-    shadowColor: '#000000',
+    shadowColor: '#00A9FF',
     shadowOffset: {width: -5, height: -4},
     shadowOpacity: 1,
     shadowRadius: 5,
