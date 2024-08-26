@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import { ArrowPathIcon } from "react-native-heroicons/outline";
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  Dimensions,
+} from 'react-native';
+import {Picker} from '@react-native-picker/picker';
+import {ArrowPathIcon} from 'react-native-heroicons/outline';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Length = () => {
   const [input, setInput] = useState('');
@@ -10,10 +18,11 @@ const Length = () => {
   const [toUnit, setToUnit] = useState('ft');
 
   const screenWidth = Dimensions.get('window').width;
-  let buttonSize = (screenWidth <= 375) ? (screenWidth - 150) / 4 : (screenWidth - 100) / 4;
+  let buttonSize =
+    screenWidth <= 375 ? (screenWidth - 150) / 4 : (screenWidth - 100) / 4;
   let reverseButtonSize = buttonSize / 1.5;
 
-  const handleButtonPress = (symbol) => {
+  const handleButtonPress = symbol => {
     if (symbol === 'C') {
       setInput('');
       setConvertedValue('');
@@ -36,10 +45,10 @@ const Length = () => {
       in: 39.3701,
       // Add more units as needed
     };
-    
+
     const valueInMeters = parseFloat(value) / conversionRates[fromUnit];
     const convertedValue = (valueInMeters * conversionRates[toUnit]).toFixed(4);
-    
+
     return isNaN(convertedValue) ? '' : convertedValue;
   };
 
@@ -55,93 +64,113 @@ const Length = () => {
     ['7', '8', '9', '⌫'],
     ['4', '5', '6', 'C'],
     ['1', '2', '3', '.'],
-    ['00', '0']
+    ['00', '0'],
   ];
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <View style={styles.inputRow}>
-          <Picker
-            selectedValue={fromUnit}
-            style={styles.picker}
-            itemStyle={{ color: '#FFFFFF' }}
-
-            onValueChange={(itemValue) => {
-              setFromUnit(itemValue);
-              setConvertedValue(convertLength(input, itemValue, toUnit));
-            }}>
-            <Picker.Item label="Meter" value="m" />
-            <Picker.Item label="Centimeter" value="cm" />
-            <Picker.Item label="Foot" value="ft" />
-            <Picker.Item label="Inch" value="in" />
-            {/* Add more units here */}
-          </Picker>
-          <TextInput
-            style={styles.inputField}
-            value={input}
-            onChangeText={(text) => {
-              setInput(text);
-              setConvertedValue(convertLength(text, fromUnit, toUnit));
-            }}
-            keyboardType="numeric"
-            placeholder="0"
-            placeholderTextColor="#747474"
-            editable={false}
-          />
-        </View>
-        {/* <TouchableOpacity onPress={handleReverse} style={styles.reverseButtonOuterShadow}>
+    <LinearGradient
+      colors={['#CDF5FD', '#CDF5FD', 'white']}
+      style={styles.gradientContainer}>
+      <View style={styles.container}>
+        <View style={styles.inputContainer}>
+          <View style={styles.inputRow}>
+            <Picker
+              selectedValue={fromUnit}
+              style={styles.picker}
+              itemStyle={{color: 'black'}}
+              onValueChange={itemValue => {
+                setFromUnit(itemValue);
+                setConvertedValue(convertLength(input, itemValue, toUnit));
+              }}>
+              <Picker.Item label="Meter" value="m" />
+              <Picker.Item label="Centimeter" value="cm" />
+              <Picker.Item label="Foot" value="ft" />
+              <Picker.Item label="Inch" value="in" />
+              {/* Add more units here */}
+            </Picker>
+            <TextInput
+              style={styles.inputField}
+              value={input}
+              onChangeText={text => {
+                setInput(text);
+                setConvertedValue(convertLength(text, fromUnit, toUnit));
+              }}
+              keyboardType="numeric"
+              placeholder="0"
+              placeholderTextColor="#747474"
+              editable={false}
+            />
+          </View>
+          {/* <TouchableOpacity onPress={handleReverse} style={styles.reverseButtonOuterShadow}>
           <View style={styles.reverseButtonInnerShadow}>
             <View style={[styles.reverseButton, { width: reverseButtonSize, height: reverseButtonSize }]}>
               <ArrowPathIcon color="#FE7A36" size={reverseButtonSize * 0.5} />
             </View>
           </View>
         </TouchableOpacity> */}
-        <View style={styles.inputRow}>
-          <Picker
-            selectedValue={toUnit}
-            style={styles.picker}
-            itemStyle={{ color: '#FFFFFF' }}
-            onValueChange={(itemValue) => {
-              setToUnit(itemValue);
-              setConvertedValue(convertLength(input, fromUnit, itemValue));
-            }}>
-            <Picker.Item label="Foot" value="ft" />
-            <Picker.Item label="Meter" value="m" />
-            <Picker.Item label="Centimeter" value="cm" />
-            <Picker.Item label="Inch" value="in" />
-            {/* Add more units here */}
-          </Picker>
-          <TextInput
-            style={styles.inputField}
-            value={convertedValue}
-            editable={false}
-          />
+          <View style={styles.inputRow}>
+            <Picker
+              selectedValue={toUnit}
+              style={styles.picker}
+              itemStyle={{color: 'black'}}
+              onValueChange={itemValue => {
+                setToUnit(itemValue);
+                setConvertedValue(convertLength(input, fromUnit, itemValue));
+              }}>
+              <Picker.Item label="Foot" value="ft" />
+              <Picker.Item label="Meter" value="m" />
+              <Picker.Item label="Centimeter" value="cm" />
+              <Picker.Item label="Inch" value="in" />
+              {/* Add more units here */}
+            </Picker>
+            <TextInput
+              style={styles.inputField}
+              value={convertedValue}
+              editable={false}
+            />
+          </View>
+        </View>
+
+        <View style={styles.buttonsContainer}>
+          {buttons.map((row, rowIndex) => (
+            <View key={rowIndex} style={styles.buttonsRow}>
+              {row.map((symbol, index) => (
+                <TouchableOpacity
+                  key={index}
+                  style={styles.buttonOuterShadow}
+                  onPress={() => handleButtonPress(symbol)}>
+                  <View style={styles.buttonInnerShadow}>
+                    <View
+                      style={[
+                        styles.neumorphButton,
+                        {width: buttonSize, height: buttonSize},
+                      ]}>
+                      <Text
+                        style={[
+                          styles.buttonText,
+                          {
+                            color:
+                              symbol === 'C' || symbol === '⌫'
+                                ? '#FE7A36'
+                                : '#747474',
+                          },
+                        ]}>
+                        {symbol}
+                      </Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+          ))}
         </View>
       </View>
-      
-      <View style={styles.buttonsContainer}>
-        {buttons.map((row, rowIndex) => (
-          <View key={rowIndex} style={styles.buttonsRow}>
-            {row.map((symbol, index) => (
-              <TouchableOpacity key={index} style={styles.buttonOuterShadow} onPress={() => handleButtonPress(symbol)}>
-                <View style={styles.buttonInnerShadow}>
-                  <View style={[styles.neumorphButton, { width: buttonSize, height: buttonSize }]}>
-                    <Text style={[styles.buttonText, { color: (symbol === 'C' || symbol === '⌫') ? '#FE7A36' : '#747474' }]}>{symbol}</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            ))}
-          </View>
-        ))}
-      </View>
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#1A1A1A',
     flex: 1,
     alignItems: 'center',
     paddingVertical: 10,
@@ -155,14 +184,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 10,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#89CFF3',
     borderRadius: 25,
     padding: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
+    shadowColor: '#89CFF3',
+    shadowOffset: {width: 6, height: 6},
     shadowOpacity: 1,
     shadowRadius: 6,
-    height:110,
+    height: 110,
+  },
+  gradientContainer:{
+    flex:1
   },
   picker: {
     flex: 2,
@@ -187,32 +219,32 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonOuterShadow: {
-    shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
+    shadowColor: '#00A9FF',
+    shadowOffset: {width: 6, height: 6},
     shadowOpacity: 1,
     shadowRadius: 6,
     margin: 10,
   },
   buttonInnerShadow: {
-    shadowColor: '#333',
-    shadowOffset: { width: -6, height: -6 },
+    shadowColor: '#A0E9FF',
+    shadowOffset: {width: -6, height: -6},
     shadowOpacity: 0.7,
     shadowRadius: 6,
   },
   neumorphButton: {
     borderRadius: 50,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#89CFF3',
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 4,
   },
   buttonText: {
     fontSize: 35,
-    color: '#747474',
+    color: 'black',
   },
   reverseButtonOuterShadow: {
     shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
+    shadowOffset: {width: 6, height: 6},
     shadowOpacity: 1,
     shadowRadius: 6,
     margin: 10,
@@ -220,7 +252,7 @@ const styles = StyleSheet.create({
   },
   reverseButtonInnerShadow: {
     shadowColor: '#333',
-    shadowOffset: { width: -6, height: -6 },
+    shadowOffset: {width: -6, height: -6},
     shadowOpacity: 0.7,
     shadowRadius: 6,
   },
