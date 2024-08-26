@@ -184,7 +184,7 @@ const Length = () => {
 const styles = StyleSheet.create({
   unitybutton: {
     width: 60,
-    backgroundColor: 'white',
+    backgroundColor: '#A0E9FF',
     borderRadius: 50,
     height: 40,
     justifyContent: 'center',
@@ -228,8 +228,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 8,
-    shadowColor: 'white',
-    shadowOffset: {width: 2, height: 2},
+    shadowColor: "white",
+    shadowOffset: {width: 5, height: 2},
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 3,
