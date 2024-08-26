@@ -65,6 +65,8 @@ const Length = () => {
           <Picker
             selectedValue={fromUnit}
             style={styles.picker}
+            itemStyle={{ color: '#FFFFFF' }}
+
             onValueChange={(itemValue) => {
               setFromUnit(itemValue);
               setConvertedValue(convertLength(input, itemValue, toUnit));
@@ -99,6 +101,7 @@ const Length = () => {
           <Picker
             selectedValue={toUnit}
             style={styles.picker}
+            itemStyle={{ color: '#FFFFFF' }}
             onValueChange={(itemValue) => {
               setToUnit(itemValue);
               setConvertedValue(convertLength(input, fromUnit, itemValue));
@@ -159,7 +162,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 6, height: 6 },
     shadowOpacity: 1,
     shadowRadius: 6,
-    height:70,
+    height:110,
   },
   picker: {
     flex: 2,
