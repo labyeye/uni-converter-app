@@ -16,6 +16,8 @@ const Length = () => {
   const [convertedValue, setConvertedValue] = useState('');
   const [fromUnit, setFromUnit] = useState('m');
   const [toUnit, setToUnit] = useState('ft');
+  const [showFromPicker, setShowFromPicker] = useState(false);
+  const [showToPicker, setShowToPicker] = useState(false);
 
   const screenWidth = Dimensions.get('window').width;
   let buttonSize =
@@ -74,20 +76,28 @@ const Length = () => {
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <View style={styles.inputRow}>
-            <Picker
-              selectedValue={fromUnit}
-              style={styles.picker}
-              itemStyle={{color: 'black'}}
-              onValueChange={itemValue => {
-                setFromUnit(itemValue);
-                setConvertedValue(convertLength(input, itemValue, toUnit));
-              }}>
-              <Picker.Item label="Meter" value="m" />
-              <Picker.Item label="Centimeter" value="cm" />
-              <Picker.Item label="Foot" value="ft" />
-              <Picker.Item label="Inch" value="in" />
-              {/* Add more units here */}
-            </Picker>
+            <TouchableOpacity
+              style={styles.unitybutton}
+              onPress={() => setShowFromPicker(!showFromPicker)}>
+              <Text style={styles.pickerText}>{fromUnit.toUpperCase()}</Text>
+            </TouchableOpacity>
+            {showFromPicker && (
+              <Picker
+                selectedValue={fromUnit}
+                style={styles.picker}
+                itemStyle={{color: 'black'}}
+                onValueChange={itemValue => {
+                  setFromUnit(itemValue);
+                  setConvertedValue(convertLength(input, itemValue, toUnit));
+                  setShowFromPicker(false);
+                }}>
+                <Picker.Item label="Meter" value="m" />
+                <Picker.Item label="Centimeter" value="cm" />
+                <Picker.Item label="Foot" value="ft" />
+                <Picker.Item label="Inch" value="in" />
+                {/* Add more units here */}
+              </Picker>
+            )}
             <TextInput
               style={styles.inputField}
               value={input}
@@ -101,28 +111,30 @@ const Length = () => {
               editable={false}
             />
           </View>
-          {/* <TouchableOpacity onPress={handleReverse} style={styles.reverseButtonOuterShadow}>
-          <View style={styles.reverseButtonInnerShadow}>
-            <View style={[styles.reverseButton, { width: reverseButtonSize, height: reverseButtonSize }]}>
-              <ArrowPathIcon color="#FE7A36" size={reverseButtonSize * 0.5} />
-            </View>
-          </View>
-        </TouchableOpacity> */}
+
           <View style={styles.inputRow}>
-            <Picker
-              selectedValue={toUnit}
-              style={styles.picker}
-              itemStyle={{color: 'black'}}
-              onValueChange={itemValue => {
-                setToUnit(itemValue);
-                setConvertedValue(convertLength(input, fromUnit, itemValue));
-              }}>
-              <Picker.Item label="Foot" value="ft" />
-              <Picker.Item label="Meter" value="m" />
-              <Picker.Item label="Centimeter" value="cm" />
-              <Picker.Item label="Inch" value="in" />
-              {/* Add more units here */}
-            </Picker>
+            <TouchableOpacity
+              style={styles.unitybutton}
+              onPress={() => setShowToPicker(!showToPicker)}>
+              <Text style={styles.pickerText}>{toUnit.toUpperCase()}</Text>
+            </TouchableOpacity>
+            {showToPicker && (
+              <Picker
+                selectedValue={toUnit}
+                style={styles.picker}
+                itemStyle={{color: 'black'}}
+                onValueChange={itemValue => {
+                  setToUnit(itemValue);
+                  setConvertedValue(convertLength(input, fromUnit, itemValue));
+                  setShowToPicker(false);
+                }}>
+                <Picker.Item label="Foot" value="ft" />
+                <Picker.Item label="Meter" value="m" />
+                <Picker.Item label="Centimeter" value="cm" />
+                <Picker.Item label="Inch" value="in" />
+                {/* Add more units here */}
+              </Picker>
+            )}
             <TextInput
               style={styles.inputField}
               value={convertedValue}
@@ -170,6 +182,14 @@ const Length = () => {
 };
 
 const styles = StyleSheet.create({
+  unitybutton: {
+    width: 60,
+    backgroundColor: 'white',
+    borderRadius: 50,
+    height: 40,
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -193,12 +213,26 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     height: 110,
   },
-  gradientContainer:{
-    flex:1
+  gradientContainer: {
+    flex: 1,
   },
   picker: {
     flex: 2,
     color: 'white',
+  },
+  pickerText: {
+    flex: 1,
+    fontSize: 18,
+    color: '#747474',
+    textAlign: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    shadowColor: 'white',
+    shadowOffset: {width: 2, height: 2},
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    elevation: 3,
   },
   inputField: {
     color: '#747474',
@@ -247,25 +281,19 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 6, height: 6},
     shadowOpacity: 1,
     shadowRadius: 6,
-    margin: 10,
-    alignSelf: 'center',
   },
   reverseButtonInnerShadow: {
-    shadowColor: '#333',
+    shadowColor: '#FFF',
     shadowOffset: {width: -6, height: -6},
     shadowOpacity: 0.7,
     shadowRadius: 6,
   },
-  reverseButton: {
+  neumorphReverseButton: {
     borderRadius: 50,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#89CFF3',
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 4,
-  },
-  reverseButtonText: {
-    fontSize: 25,
-    color: '#FE7A36',
   },
 });
 
