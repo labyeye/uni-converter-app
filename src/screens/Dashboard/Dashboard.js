@@ -30,7 +30,7 @@ const Dashboard = ({ navigation }) => {
     if (hours < 12) {
       return 'Good Morning';
     } else if (hours < 18) {
-      return 'Good Afternoo';
+      return 'Good Afternoon';
     } else {
       return 'Good Evening';
     }
