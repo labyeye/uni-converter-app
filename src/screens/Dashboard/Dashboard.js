@@ -28,11 +28,11 @@ const Dashboard = ({ navigation }) => {
   const getGreeting = () => {
     const hours = new Date().getHours();
     if (hours < 12) {
-      return 'Good Morning';
+      return 'Good Morning,';
     } else if (hours < 18) {
-      return 'Good Afternoon';
+      return 'Good Afternoon,';
     } else {
-      return 'Good Evening';
+      return 'Good Evening,';
     }
   };
 
