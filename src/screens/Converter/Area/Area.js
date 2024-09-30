@@ -157,6 +157,18 @@ const Area = () => {
                             color:
                               symbol === 'C' || symbol === '⌫'
                                 ? '#FE7A36'
+                                : symbol === '1' ||
+                                  symbol === '2' ||
+                                  symbol === '3' ||
+                                  symbol === '4' ||
+                                  symbol === '5' ||
+                                  symbol === '6' ||
+                                  symbol === '7' ||
+                                  symbol === '8' ||
+                                  symbol === '9' ||
+                                  symbol === '0' ||
+                                  symbol === '00' 
+                                ? 'black'
                                 : '#747474',
                           },
                         ]}>
