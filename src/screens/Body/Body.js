@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
   Linking,
+  SafeAreaView,
 } from 'react-native';
 import {
   ArrowsUpDownIcon,
@@ -55,7 +56,7 @@ const BodyMassIndex = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.inputContainer}>
         <View style={styles.out}>
           <View style={styles.inputRow}>
@@ -140,7 +141,7 @@ const BodyMassIndex = () => {
           }}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

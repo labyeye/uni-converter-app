@@ -9,7 +9,6 @@ import {
   Alert,
 } from 'react-native';
 
-
 const createEmptyMatrix = (rows, cols) => {
   return Array.from({ length: rows }, () => Array(cols).fill(0));
 };
@@ -176,7 +175,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     paddingVertical: 20,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#CDF5FD',  // Color changed
   },
   inputContainer: {
     width: '90%',
@@ -197,17 +196,17 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   dimensionInput: {
-    color: '#747474',
+    color: '#00A9FF',  // Color changed
     fontSize: 18,
     textAlign: 'center',
     width: 60,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#CDF5FD',  // Color changed
     marginHorizontal: 5,
   },
   label: {
-    color: '#FE7A36',
+    color: '#747474',  // Color changed
     fontSize: 20,
     marginVertical: 10,
   },
@@ -217,25 +216,25 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   resultText: {
-    color: '#FFF',
+    color: '#00A9FF',  // Color changed
     fontSize: 18,
     textAlign: 'center',
     width: 40,
   },
   calculateButton: {
-    backgroundColor: '#FE7A36',
+    backgroundColor: '#A0E9FF',  // Color changed
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 25,
     marginVertical: 20,
-    shadowColor: '#000',
+    shadowColor: '#00A9FF',
     shadowOffset: { width: 6, height: 6 },
     shadowOpacity: 0.7,
     shadowRadius: 6,
   },
   calculateButtonText: {
     fontSize: 18,
-    color: '#FFF',
+    color: '#000',  // Color changed
     fontWeight: 'bold',
   },
   resultContainer: {
@@ -245,32 +244,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     shadowColor: '#000',
     shadowOffset: { width: 6, height: 6 },
-    shadowOpacity: 1,
+    shadowOpacity: 0.7,
     shadowRadius: 6,
-    backgroundColor: '#1A1A1A',
   },
   resultLabel: {
-    color: '#FE7A36',
-    fontSize: 20,
+    color: '#00A9FF',  // Color changed
+    fontSize: 22,
     marginBottom: 10,
   },
-  inputField: {
-    color: '#747474',
-    fontSize: 18,
-    textAlign: 'center',
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#1A1A1A',
-    marginHorizontal: 5,
-  },
-  neumorphTextInput: {
-    shadowColor: '#1A1A1A',
-    shadowOffset: { width: -2, height: -2 },
-    shadowOpacity: 0.7,
-    shadowRadius: 3,
-    elevation: 3,
-  },
 });
-
 export default MatrixMultiplication;

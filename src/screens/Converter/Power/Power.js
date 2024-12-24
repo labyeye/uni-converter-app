@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions, SafeAreaView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -63,7 +63,7 @@ const Power = () => {
     <LinearGradient
       colors={['#CDF5FD', '#CDF5FD', 'white']}
       style={styles.gradientContainer}>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.inputContainer}>
           <View style={styles.inputRow}>
             <TouchableOpacity
@@ -151,6 +151,18 @@ const Power = () => {
                             color:
                               symbol === 'C' || symbol === '⌫'
                                 ? '#FE7A36'
+                                : symbol === '1' ||
+                                  symbol === '2' ||
+                                  symbol === '3' ||
+                                  symbol === '4' ||
+                                  symbol === '5' ||
+                                  symbol === '6' ||
+                                  symbol === '7' ||
+                                  symbol === '8' ||
+                                  symbol === '9' ||
+                                  symbol === '0' ||
+                                  symbol === '00' 
+                                ? 'black'
                                 : '#747474',
                           },
                         ]}>
@@ -163,7 +175,7 @@ const Power = () => {
             </View>
           ))}
         </View>
-      </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 };

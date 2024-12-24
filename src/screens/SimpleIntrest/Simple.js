@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  SafeAreaView,
+} from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import LinearGradient from 'react-native-linear-gradient';
 const SimpleInterest = () => {
   const [principal, setPrincipal] = useState('');
   const [rate, setRate] = useState('');
@@ -23,82 +30,96 @@ const SimpleInterest = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <View style={styles.out}>
-          <View style={styles.inputRow}>
-            <IonIcons
-              name="pricetag"
-              color="#FE7A36"
-              size={24}
-              style={styles.icon}
-            />
-            <Text style={styles.unitName}>Principal Amount</Text>
-            <TextInput
-              style={[styles.inputField, styles.neumorphTextInput]}
-              value={principal}
-              onChangeText={(text) => setPrincipal(text)}
-              keyboardType="numeric"
-              placeholder="0"
-              placeholderTextColor="#747474"
-            />
+    <LinearGradient
+      colors={['#CDF5FD', '#CDF5FD', 'white']}
+      style={styles.gradientContainer}>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.inputContainer}>
+          <View style={styles.out}>
+            <View style={styles.inputRow}>
+              <IonIcons
+                name="pricetag"
+                color="#FE7A36"
+                size={24}
+                style={styles.icon}
+              />
+              <Text style={styles.unitName}>Principal Amount</Text>
+              <TextInput
+                style={[styles.inputField, styles.neumorphTextInput]}
+                value={principal}
+                onChangeText={text => setPrincipal(text)}
+                keyboardType="numeric"
+                placeholder="0"
+                placeholderTextColor="#747474"
+              />
+            </View>
+          </View>
+
+          <View style={styles.out}>
+            <View style={styles.inputRow}>
+              <MaterialCommunityIcons
+                name="percent"
+                color="#FE7A36"
+                size={24}
+                style={styles.icon}
+              />
+              <Text style={styles.unitName}>Interest Rate (%)</Text>
+              <TextInput
+                style={[styles.inputField, styles.neumorphTextInput]}
+                value={rate}
+                onChangeText={text => setRate(text)}
+                keyboardType="numeric"
+                placeholder="0"
+                placeholderTextColor="#747474"
+              />
+            </View>
+          </View>
+
+          <View style={styles.out}>
+            <View style={styles.inputRow}>
+              <MaterialCommunityIcons
+                name="clock-outline"
+                color="#FE7A36"
+                size={24}
+                style={styles.icon}
+              />
+              <Text style={styles.unitName}>Time (in years)</Text>
+              <TextInput
+                style={[styles.inputField, styles.neumorphTextInput]}
+                value={time}
+                onChangeText={text => setTime(text)}
+                keyboardType="numeric"
+                placeholder="0"
+                placeholderTextColor="#747474"
+              />
+            </View>
           </View>
         </View>
 
-        <View style={styles.out}>
-          <View style={styles.inputRow}>
-            <MaterialCommunityIcons
-              name="percent"
-              color="#FE7A36"
-              size={24}
-              style={styles.icon}
-            />
-            <Text style={styles.unitName}>Interest Rate (%)</Text>
-            <TextInput
-              style={[styles.inputField, styles.neumorphTextInput]}
-              value={rate}
-              onChangeText={(text) => setRate(text)}
-              keyboardType="numeric"
-              placeholder="0"
-              placeholderTextColor="#747474"
-            />
+        <TouchableOpacity
+          style={styles.calculateButton}
+          onPress={calculateSimpleInterest}>
+          <Text style={styles.calculateButtonText}>
+            Calculate Simple Interest
+          </Text>
+        </TouchableOpacity>
+
+        <View style={styles.outneomorph}>
+          <View style={[styles.resultContainer, styles.neumorphResult]}>
+            <Text style={styles.resultText}>
+              Principal Amount: {principal || ' --'}
+            </Text>
+            <Text style={styles.resultText}>
+              Interest Rate: {rate || ' --'} %
+            </Text>
+            <Text style={styles.resultText}>Time: {time || '  --'} years</Text>
+            <Text style={styles.resultText}>
+              Simple Interest: {simpleInterest || '--'}
+            </Text>
           </View>
         </View>
-
-        <View style={styles.out}>
-          <View style={styles.inputRow}>
-            <MaterialCommunityIcons
-              name="clock-outline"
-              color="#FE7A36"
-              size={24}
-              style={styles.icon}
-            />
-            <Text style={styles.unitName}>Time (in years)</Text>
-            <TextInput
-              style={[styles.inputField, styles.neumorphTextInput]}
-              value={time}
-              onChangeText={(text) => setTime(text)}
-              keyboardType="numeric"
-              placeholder="0"
-              placeholderTextColor="#747474"
-            />
-          </View>
-        </View>
-      </View>
-
-      <TouchableOpacity style={styles.calculateButton} onPress={calculateSimpleInterest}>
-        <Text style={styles.calculateButtonText}>Calculate Simple Interest</Text>
-      </TouchableOpacity>
-
-      <View style={styles.outneomorph}>
-        <View style={[styles.resultContainer, styles.neumorphResult]}>
-          <Text style={styles.resultText}>Principal Amount:    {principal || ' --'}</Text>
-          <Text style={styles.resultText}>Interest Rate:            {rate || ' --'} %</Text>
-          <Text style={styles.resultText}>Time:                         {time || '  --'} years</Text>
-          <Text style={styles.resultText}>Simple Interest:         {simpleInterest||'--'}</Text>
-        </View>
-      </View>
-    </View>
+      </SafeAreaView>
+    </LinearGradient>
   );
 };
 
@@ -111,13 +132,16 @@ const styles = StyleSheet.create({
   },
   out: {
     shadowColor: '#000000',
-    shadowOffset: { width: -5, height: -4 },
+    shadowOffset: {width: -5, height: -4},
     shadowOpacity: 1,
     shadowRadius: 5,
     elevation: 4,
     borderRadius: 40,
     height: 75,
     marginVertical: 10,
+  },
+  gradientContainer: {
+    flex: 1,
   },
   inputContainer: {
     width: '90%',
@@ -131,7 +155,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     padding: 10,
     shadowColor: '#303030',
-    shadowOffset: { width: 3, height: 3},
+    shadowOffset: {width: 3, height: 3},
     shadowOpacity: 1,
     shadowRadius: 6,
   },
@@ -151,7 +175,7 @@ const styles = StyleSheet.create({
   },
   neumorphTextInput: {
     shadowColor: '#1A1A1A',
-    shadowOffset: { width: -2, height: -2 },
+    shadowOffset: {width: -2, height: -2},
     shadowOpacity: 0.7,
     shadowRadius: 3,
     elevation: 3,
@@ -164,7 +188,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginTop: 20,
     shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
+    shadowOffset: {width: 6, height: 6},
     shadowOpacity: 0.7,
     shadowRadius: 6,
   },
@@ -180,7 +204,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 20,
     shadowColor: '#000',
-    shadowOffset: { width: 6, height: 6 },
+    shadowOffset: {width: 6, height: 6},
     shadowOpacity: 1,
     shadowRadius: 6,
     backgroundColor: '#1A1A1A',
@@ -190,20 +214,20 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginVertical: 5,
   },
-  outneomorph:{
-    height:172,
+  outneomorph: {
+    height: 172,
     shadowColor: '#303030',
     shadowOffset: {width: -1, height: 27},
     shadowOpacity: 1,
     shadowRadius: 5,
     elevation: 4,
-    borderRadius:20,
-    marginTop:0,
+    borderRadius: 20,
+    marginTop: 0,
     backgroundColor: '#1A1A1A',
   },
   neumorphResult: {
     shadowColor: '#000000',
-    shadowOffset: { width: -6, height: -4 },
+    shadowOffset: {width: -6, height: -4},
     shadowOpacity: 1,
     shadowRadius: 5,
     elevation: 4,

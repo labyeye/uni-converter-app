@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
   Dimensions,
+  SafeAreaView
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -49,7 +50,7 @@ const Calculator = () => {
     <LinearGradient
       colors={['#CDF5FD', '#CDF5FD', 'white']}
       style={styles.gradientContainer}>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.inputContainer}>
           <View style={styles.inputOuterShadow}>
             <View style={styles.inputInnerShadow}>
@@ -110,7 +111,7 @@ const Calculator = () => {
             </View>
           ))}
         </View>
-      </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 };

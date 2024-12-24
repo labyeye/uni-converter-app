@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions, SafeAreaView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -64,7 +64,7 @@ const Area = () => {
     <LinearGradient
       colors={['#CDF5FD', '#CDF5FD', 'white']}
       style={styles.gradientContainer}>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.inputContainer}>
           <View style={styles.inputRow}>
             <TouchableOpacity
@@ -181,7 +181,7 @@ const Area = () => {
             </View>
           ))}
         </View>
-      </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
