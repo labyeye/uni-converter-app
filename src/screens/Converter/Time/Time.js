@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions, SafeAreaView } from 'react-native';
 import { ArrowPathIcon } from "react-native-heroicons/outline";
 
 const Time = () => {
@@ -50,7 +50,7 @@ const Time = () => {
   ];
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.inputContainer}>
         <View style={styles.inputRow}>
           <View style={styles.circle}><Text style={styles.unitText}>{isMeterToFoot ? 'hr' : 'sec'}</Text></View>
@@ -102,7 +102,7 @@ const Time = () => {
           </View>
         ))}
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
